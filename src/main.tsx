@@ -39,7 +39,7 @@ function Loading() {
       <div />
       <div />
       <div />
-      <span>Cargando tu espacio…</span>
+      <span>Cargando el espacio…</span>
     </div>
   );
 }
