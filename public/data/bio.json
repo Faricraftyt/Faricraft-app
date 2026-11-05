@@ -1,8 +1,27 @@
 {
   "name": "Faricraft",
-  "description": "Biografía pendiente de completar.",
-  "channelDescription": "Videos de Minecraft, renders, animaciones y wallpapers.",
-  "avatar": "",
-  "links": [],
-  "projects": []
+  "description": "Soy un youtuber de Minecraft, editor de video en Davinci Resolve y creador de miniaturas.",
+  "channelDescription": "Además de videos también hago streams en Youtube, Kick y Twitch todos los viernes a las 18:00 hora argentina.",
+  "avatar": "images/c284a353-b578-48a6-acb5-3677d13ca383.png",
+  "links": [
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@faricraftyt"
+    },
+    {
+      "label": "Twitch",
+      "url": "https://www.twitch.tv/faricraftyt"
+    },
+    {
+      "label": "Kick",
+      "url": "https://kick.com/faricraftyt"
+    }
+  ],
+  "projects": [
+    {
+      "title": "MI LIBRO!!!",
+      "description": "El libro que escribí...",
+      "url": "https://faricraftyt.github.io/Faricraft-app/#/recursos/9db5686a-9116-4a2b-bb07-3d1e81fd43e8"
+    }
+  ]
 }
