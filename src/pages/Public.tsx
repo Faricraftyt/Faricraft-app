@@ -203,7 +203,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
             <span>F.</span>
             <small>CREAR. JUGAR. COMPARTIR.</small>
           </div>
-          <span className="art-caption">FARICRAFT / CREATIVE SPACE</span>
+          <span className="art-caption">FARICRAFT APP</span>
         </div>
       </section>
       <div className="quick-grid">
@@ -212,7 +212,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           [
             "/recursos",
             "Recursos",
-            "Un toque de Faricraft para tus proyectos.",
+            "Un toque de Faricraft.",
             Box,
           ],
           ["/bio", "Sobre mí", "Conocé quién está detrás.", UserRound],
@@ -244,7 +244,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
         </div>
       ) : (
         <Empty title="Espacio reservado para lo que viene">
-          Los recursos aparecerán acá cuando estén publicados.
+          Los recursos aparecerán aquí cuando estén publicados.
         </Empty>
       )}
       {d.settings.channelUrl && (
