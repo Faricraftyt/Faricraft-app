@@ -919,3 +919,8 @@ summary {
 fieldset:disabled {
   opacity: 0.8;
 }
+.hero-logo {
+  width: 80%;
+  height: 170px;
+  object-fit: contain;
+}
