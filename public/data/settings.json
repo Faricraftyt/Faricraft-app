@@ -1,11 +1,24 @@
 {
   "name": "Faricraft APP",
   "description": "Un espacio donde encontrarás recursos exclusivos, videos y más",
-  "logo": "",
-  "accent": "#b5ee81",
-  "channelId": "",
-  "channelUrl": "",
-  "repositoryUrl": "",
+  "logo": "images/2ce8701d-a0b3-4694-90d8-70e91de7352d.png",
+  "accent": "#8193ee",
+  "channelId": "UCdyTHUibIxh4PgeRVUSZZiA",
+  "channelUrl": "https://www.youtube.com/@faricraftyt",
+  "repositoryUrl": "https://github.com/Faricraftyt/Faricraft-app",
   "theme": "dark",
-  "links": []
+  "links": [
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@faricraftyt"
+    },
+    {
+      "label": "Twitch",
+      "url": "https://www.twitch.tv/faricraftyt"
+    },
+    {
+      "label": "Kick",
+      "url": "https://kick.com/faricraftyt"
+    }
+  ]
 }
