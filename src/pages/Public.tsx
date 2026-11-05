@@ -8,7 +8,7 @@ import {
   Film,
   UserRound,
 } from "lucide-react";
-import { Data } from "../services/schema";
+import { Data, asset } from "../services/schema";
 import {
   Empty,
   ResourceCard,
@@ -200,7 +200,15 @@ export default function Public({ d, page }: { d: Data; page: string }) {
         <div className="hero-art" aria-hidden="true">
           <div className="art-lines" />
           <div className="art-frame">
-            <span>F.</span>
+            {d.settings.logo ? (
+  <img
+    className="hero-logo"
+    src={asset(d.settings.logo)}
+    alt="Logo de Faricraft"
+  />
+) : (
+  <span>F.</span>
+)}
             <small>CREAR. JUGAR. COMPARTIR.</small>
           </div>
           <span className="art-caption">FARICRAFT APP</span>
