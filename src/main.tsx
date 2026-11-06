@@ -102,7 +102,7 @@ function App() {
           {[
             ["/", "Inicio", Home],
             ["/videos", "Videos", Film],
-            ["/recursos", "Recursos", Box],
+            ["/recursos", "Descargas", Box],
             ["/bio", "BIO", UserRound],
           ].map(([path, name, Icon]: any) => (
             <NavLink key={path} to={path} end={path === "/"}>

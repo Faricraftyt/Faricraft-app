@@ -356,7 +356,7 @@ export default function Admin({
       </div>
       <div className="adminbar">
         <div className="chips">
-          {["Dashboard", "Recursos", "BIO", "Configuración", "Publicación"].map(
+          {["Dashboard", "Descargas", "BIO", "Configuración", "Publicación"].map(
             (t) => (
               <button
                 key={t}
@@ -429,7 +429,7 @@ export default function Admin({
         <>
           <div className="stats">
             {[
-              ["Recursos configurados", d.resources.length],
+              ["Descargas configurados", d.resources.length],
               [
                 "Publicados en el borrador",
                 d.resources.filter((r) => r.published).length,
@@ -451,7 +451,7 @@ export default function Admin({
             <div className="actions">
               <button
                 onClick={() => {
-                  T("Recursos");
+                  T("Descargas");
                   addResource();
                 }}
               >
@@ -462,7 +462,7 @@ export default function Admin({
               <button onClick={() => T("Publicación")}>Cómo publicar</button>
             </div>
           </div>
-          <h2>Recursos recientes</h2>
+          <h2>Descargas recientes</h2>
           {[...d.resources]
             .sort((a, b) => b.date.localeCompare(a.date))
             .slice(0, 5)
@@ -471,7 +471,7 @@ export default function Admin({
                 <span>{r.title}</span>
                 <button
                   onClick={() => {
-                    T("Recursos");
+                    T("Descargas");
                     E({ ...r });
                   }}
                 >
@@ -482,7 +482,7 @@ export default function Admin({
           {!d.resources.length && <p>Todavía no configuraste recursos.</p>}
         </>
       )}
-      {tab === "Recursos" && (
+      {tab === "Descargas" && (
         <>
           {editing ? (
             <section className="panel">
@@ -702,7 +702,7 @@ export default function Admin({
           ) : (
             <>
               <div className="section-heading">
-                <h2>Recursos</h2>
+                <h2>Descargas</h2>
                 <button onClick={addResource} disabled={!d.categories.length}>
                   <Plus size={16} />
                   Crear recurso

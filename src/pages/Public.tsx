@@ -48,7 +48,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
     const r = published.find((x) => x.id === id);
     return r ? (
       <>
-        <Link to="/recursos">← Todos los recursos</Link>
+        <Link to="/recursos">← Todas las descargas</Link>
         <div className="detail">
           <Picture src={r.image} alt={r.title} />
           <section>
@@ -72,15 +72,15 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               rel="noreferrer"
             >
               <Download size={18} />
-              Descargar recurso
+              Descargar archivo
             </a>
             <p className="muted">Se abrirá el enlace público del archivo.</p>
           </section>
         </div>
       </>
     ) : (
-      <Empty title="Recurso no disponible">
-        Volvé a la biblioteca para explorar los recursos publicados.
+      <Empty title="Descarga no disponible">
+        Volvé a la biblioteca para explorar las descargas publicadas.
       </Empty>
     );
   }
@@ -115,14 +115,14 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           <label className="search">
             <Search size={20} />
             <input
-              aria-label="Buscar recursos"
-              placeholder="Buscar un recurso…"
+              aria-label="Buscar descargas"
+              placeholder="Buscar una descarga…"
               value={q}
               onChange={(e) => Q(e.target.value)}
             />
           </label>
           <select
-            aria-label="Ordenar recursos"
+            aria-label="Ordenar descargas"
             value={sort}
             onChange={(e) => S(e.target.value)}
           >
@@ -149,7 +149,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
             </div>
             <div className="section-heading">
               <h2>Biblioteca</h2>
-              <small>{list.length} recursos</small>
+              <small>{list.length} descargas</small>
             </div>
             {list.length ? (
               <div className="grid">
@@ -167,7 +167,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               >
                 {published.length
                   ? "Probá otra búsqueda o categoría."
-                  : "Cuando publique mis primeros recursos, vas a encontrarlos acá."}
+                  : "Cuando publique mis primeras descargas, vas a encontrarlos acá."}
               </Empty>
             )}
           </>
@@ -190,7 +190,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           <p>{d.settings.description}</p>
           <div className="actions">
             <Link className="button primary" to="/recursos">
-              Explorar recursos <ArrowRight size={18} />
+              Explorar descargas <ArrowRight size={18} />
             </Link>
             <Link className="button" to="/videos">
               Ver videos <Film size={18} />
@@ -219,7 +219,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           ["/videos", "Videos", "Una partida, una nueva historia.", Film],
           [
             "/recursos",
-            "Recursos",
+            "Descargas",
             "Un toque de Faricraft.",
             Box,
           ],
@@ -252,7 +252,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
         </div>
       ) : (
         <Empty title="Espacio reservado para lo que viene">
-          Los recursos aparecerán aquí cuando estén publicados.
+          Las descargas aparecerán aquí cuando estén publicadas.
         </Empty>
       )}
       {d.settings.channelUrl && (
