@@ -29,7 +29,11 @@ def fetch_catalog(url):
         "retries": 3,
         "extractor_retries": 3,
         "socket_timeout": 30,
-        "extractor_args": {"youtubetab": {"approximate_date": ["true"]}},
+        "http_headers": {"Accept-Language": "es-AR,es;q=0.9"},
+        "extractor_args": {
+            "youtube": {"lang": ["es"]},
+            "youtubetab": {"lang": ["es"], "approximate_date": ["true"]},
+        },
     }) as youtube:
         return youtube.extract_info(url, download=False)
 

@@ -14,8 +14,10 @@ const original = () =>
       ),
     ]),
   );
-test("initial content passes validation", () =>
-  assert.equal(validate(original()).resources.length, 0));
+test("published content passes validation", () => {
+  const content = original();
+  assert.equal(validate(content).resources.length, content.resources.length);
+});
 test("rejects corrupt types and dangerous links", () => {
   const d = original();
   d.settings.channelUrl = "javascript:alert(1)";

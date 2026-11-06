@@ -44,4 +44,18 @@ class FeedTests(unittest.TestCase):
         self.assertEqual(result["items"], [{"id": "old"}])
         self.assertTrue(result["error"])
 
+class LanguageTests(unittest.TestCase):
+    def test_catalog_requests_spanish_metadata(self):
+        from unittest.mock import patch, MagicMock
+        import sys
+        from update_videos import fetch_catalog
+        module = MagicMock()
+        with patch.dict(sys.modules, {"yt_dlp": module}):
+            fetch_catalog("https://www.youtube.com/@faricraftyt")
+        options = module.YoutubeDL.call_args.args[0]
+        self.assertEqual(options["extractor_args"]["youtube"]["lang"], ["es"])
+        self.assertEqual(options["extractor_args"]["youtubetab"]["lang"], ["es"])
+        self.assertIn("es", options["http_headers"]["Accept-Language"])
+        self.assertTrue(options["skip_download"])
+
 if __name__ == "__main__": unittest.main()

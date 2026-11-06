@@ -1,3 +1,4 @@
+import { t, useLanguage } from "../services/i18n";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -17,6 +18,7 @@ import {
   BioView,
 } from "../components/UI";
 export default function Public({ d, page }: { d: Data; page: string }) {
+  useLanguage();
   const [q, Q] = useState(""),
     [cat, C] = useState(""),
     [sort, S] = useState("new");
@@ -28,9 +30,9 @@ export default function Public({ d, page }: { d: Data; page: string }) {
   if (page === "videos")
     return (
       <>
-        <span className="eyebrow">EL CANAL</span>
-        <h1>Una aventura más.</h1>
-        <p className="lead">Todos los videos del canal, en un solo lugar.</p>
+        <span className="eyebrow">{t("EL CANAL")}</span>
+        <h1>{t("Una aventura más.")}</h1>
+        <p className="lead">{t("Todos los videos del canal, en un solo lugar.")}</p>
         <VideosView d={d} />
         {d.settings.channelUrl && (
           <a
@@ -38,9 +40,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
             href={d.settings.channelUrl}
             target="_blank"
             rel="noreferrer"
-          >
-            Ir al canal ↗
-          </a>
+          >{t("Ir al canal ↗")}</a>
         )}
       </>
     );
@@ -48,12 +48,12 @@ export default function Public({ d, page }: { d: Data; page: string }) {
     const r = published.find((x) => x.id === id);
     return r ? (
       <>
-        <Link to="/recursos">← Todas las descargas</Link>
+        <Link to="/recursos">{t("← Todas las descargas")}</Link>
         <div className="detail">
           <Picture src={r.image} alt={r.title} />
           <section>
             <span className="eyebrow">
-              {d.categories.find((c) => c.id === r.category)?.name}
+              {t(d.categories.find((c) => c.id === r.category)?.name || "")}
             </span>
             <h1>{r.title}</h1>
             <p className="prose">{r.description}</p>
@@ -71,17 +71,13 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               target="_blank"
               rel="noreferrer"
             >
-              <Download size={18} />
-              Descargar archivo
-            </a>
-            <p className="muted">Se abrirá el enlace público del archivo.</p>
+              <Download size={18} />{t("Descargar archivo")}</a>
+            <p className="muted">{t("Se abrirá el enlace público del archivo.")}</p>
           </section>
         </div>
       </>
     ) : (
-      <Empty title="Descarga no disponible">
-        Volvé a la biblioteca para explorar las descargas publicadas.
-      </Empty>
+      <Empty title={t("Descarga no disponible")}>{t("Volvé a la biblioteca para explorar las descargas publicadas.")}</Empty>
     );
   }
   if (page === "recursos") {
@@ -102,50 +98,46 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       );
     return (
       <>
-        <span className="eyebrow">HECHO PARA COMPARTIR</span>
-        <h1>Descarga todos los recursos</h1>
-        <p className="lead">
-          Todos los archivos y proyectos que te enseño en mi canal.. o no
-        </p>
+        <span className="eyebrow">{t("HECHO PARA COMPARTIR")}</span>
+        <h1>{t("Descarga todos los recursos")}</h1>
+        <p className="lead">{t("Todos los archivos y proyectos que te enseño en mi canal.. o no")}</p>
         <div className="toolbar">
           <label className="search">
             <Search size={20} />
             <input
-              aria-label="Buscar descargas"
-              placeholder="Buscar una descarga…"
+              aria-label={t("Buscar descargas")}
+              placeholder={t("Buscar una descarga…")}
               value={q}
               onChange={(e) => Q(e.target.value)}
             />
           </label>
           <select
-            aria-label="Ordenar descargas"
+            aria-label={t("Ordenar descargas")}
             value={sort}
             onChange={(e) => S(e.target.value)}
           >
-            <option value="new">Más recientes</option>
-            <option value="old">Más antiguos</option>
-            <option value="custom">Orden del creador</option>
+            <option value="new">{t("Más recientes")}</option>
+            <option value="old">{t("Más antiguos")}</option>
+            <option value="custom">{t("Orden del creador")}</option>
           </select>
         </div>
         {
           <>
             <div className="chips">
-              <button aria-pressed={!cat} onClick={() => C("")}>
-                Todo
-              </button>
+              <button aria-pressed={!cat} onClick={() => C("")}>{t("Todo")}</button>
               {d.categories.map((c) => (
                 <button
                   aria-pressed={cat === c.id}
                   key={c.id}
                   onClick={() => C(c.id)}
                 >
-                  {c.name}
+                  {t(c.name)}
                 </button>
               ))}
             </div>
             <div className="section-heading">
-              <h2>Biblioteca</h2>
-              <small>{list.length} descargas</small>
+              <h2>{t("Biblioteca")}</h2>
+              <small>{list.length} {t("descargas")}</small>
             </div>
             {list.length ? (
               <div className="grid">
@@ -157,13 +149,13 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               <Empty
                 title={
                   published.length
-                    ? "No encontramos coincidencias"
-                    : "Las buenas ideas están en camino"
+                    ? t("No encontramos coincidencias")
+                    : t("Las buenas ideas están en camino")
                 }
               >
                 {published.length
-                  ? "Probá otra búsqueda o categoría."
-                  : "Cuando publique mis primeras descargas, vas a encontrarlos acá."}
+                  ? t("Probá otra búsqueda o categoría.")
+                  : t("Cuando publique mis primeras descargas, vas a encontrarlos acá.")}
               </Empty>
             )}
           </>
@@ -176,20 +168,14 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       <section className="hero">
         <div>
           <span className="eyebrow">
-            <span className="dot" /> EL ESPACIO DE FARICRAFT
-          </span>
-          <h1>
-            Ideas que salen
-            <br />
-            del <em>bloque.</em>
+            <span className="dot" />{t("EL ESPACIO DE FARICRAFT")}</span>
+          <h1>{t("Ideas que salen")}<br />{t("del")} {" "}<em>{t("bloque.")}</em>
           </h1>
-          <p>{d.settings.description}</p>
+          <p>{t(d.settings.description)}</p>
           <div className="actions">
-            <Link className="button primary" to="/recursos">
-              Explorar descargas <ArrowRight size={18} />
+            <Link className="button primary" to="/recursos">{t("Explorar descargas")}<ArrowRight size={18} />
             </Link>
-            <Link className="button" to="/videos">
-              Ver videos <Film size={18} />
+            <Link className="button" to="/videos">{t("Ver videos")}<Film size={18} />
             </Link>
           </div>
         </div>
@@ -200,26 +186,26 @@ export default function Public({ d, page }: { d: Data; page: string }) {
   <img
     className="hero-logo"
     src={asset(d.settings.logo)}
-    alt="Logo de Faricraft"
+    alt={t("Logo de Faricraft")}
   />
 ) : (
   <span>F.</span>
 )}
-            <small>CREAR. JUGAR. COMPARTIR.</small>
+            <small>{t("CREAR. JUGAR. COMPARTIR.")}</small>
           </div>
           <span className="art-caption">FARICRAFT APP</span>
         </div>
       </section>
       <div className="quick-grid">
         {[
-          ["/videos", "Videos", "Una partida, una nueva historia.", Film],
+          ["/videos", t("Videos"), t("Una partida, una nueva historia."), Film],
           [
             "/recursos",
-            "Descargas",
-            "Un toque de Faricraft.",
+            t("Descargas"),
+            t("Un toque de Faricraft."),
             Box,
           ],
-          ["/bio", "Sobre mí", "Conocé quién está detrás.", UserRound],
+          ["/bio", t("Sobre mí"), t("Conocé quién está detrás."), UserRound],
         ].map(([url, title, desc, Icon]: any) => (
           <Link className="quick" to={url} key={url}>
             <Icon />
@@ -232,13 +218,13 @@ export default function Public({ d, page }: { d: Data; page: string }) {
         ))}
       </div>
       <div className="section-heading">
-        <h2>Lo último del canal</h2>
-        <Link to="/videos">Todos los videos ↗</Link>
+        <h2>{t("Lo último del canal")}</h2>
+        <Link to="/videos">{t("Todos los videos ↗")}</Link>
       </div>
       <VideosView d={d} limit={1} />
       <div className="section-heading">
-        <h2>Recién creados</h2>
-        <Link to="/recursos">Ver biblioteca ↗</Link>
+        <h2>{t("Recién creados")}</h2>
+        <Link to="/recursos">{t("Ver biblioteca ↗")}</Link>
       </div>
       {published.length ? (
         <div className="grid">
@@ -247,9 +233,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           ))}
         </div>
       ) : (
-        <Empty title="Espacio reservado para lo que viene">
-          Las descargas aparecerán aquí cuando estén publicadas.
-        </Empty>
+        <Empty title={t("Espacio reservado para lo que viene")}>{t("Las descargas aparecerán aquí cuando estén publicadas.")}</Empty>
       )}
       {d.settings.channelUrl && (
         <a
@@ -257,9 +241,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           href={d.settings.channelUrl}
           target="_blank"
           rel="noreferrer"
-        >
-          Visitar mi canal de YouTube ↗
-        </a>
+        >{t("Visitar mi canal de YouTube ↗")}</a>
       )}
     </>
   );

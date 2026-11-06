@@ -1,3 +1,5 @@
+import { LanguageSelector } from "./components/LanguageSelector";
+import { t, useLanguage } from "./services/i18n";
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -24,9 +26,9 @@ class Boundary extends React.Component<
   render() {
     return this.state.failed ? (
       <main>
-        <h1>No se pudo abrir esta sección.</h1>
-        <p>Tus borradores siguen guardados en este navegador.</p>
-        <button onClick={() => location.reload()}>Reintentar</button>
+        <h1>{t("No se pudo abrir esta sección.")}</h1>
+        <p>{t("Tus borradores siguen guardados en este navegador.")}</p>
+        <button onClick={() => location.reload()}>{t("Reintentar")}</button>
       </main>
     ) : (
       this.props.children
@@ -35,15 +37,16 @@ class Boundary extends React.Component<
 }
 function Loading() {
   return (
-    <div className="loading" role="status" aria-label="Cargando">
+    <div className="loading" role="status" aria-label={t("Cargando")}>
       <div />
       <div />
       <div />
-      <span>Cargando el espacio…</span>
+      <span>{t("Cargando el espacio…")}</span>
     </div>
   );
 }
 function App() {
+  useLanguage();
   const [d, D] = useState<Data | null>(null),
     [err, E] = useState(""),
     [theme, T] = useState(localStorage.getItem("faricraft-theme") || "");
@@ -67,10 +70,10 @@ function App() {
   if (err)
     return (
       <main>
-        <h1>No pudimos cargar el contenido.</h1>
+        <h1>{t("No pudimos cargar el contenido.")}</h1>
         <p role="alert">{err}</p>
-        <p>Revisá los archivos JSON publicados y volvé a intentar.</p>
-        <button onClick={() => location.reload()}>Reintentar</button>
+        <p>{t("Revisá los archivos JSON publicados y volvé a intentar.")}</p>
+        <button onClick={() => location.reload()}>{t("Reintentar")}</button>
       </main>
     );
   if (!d) return <Loading />;
@@ -83,9 +86,7 @@ function App() {
           e.preventDefault();
           document.getElementById("main")?.focus();
         }}
-      >
-        Saltar al contenido
-      </a>
+      >{t("Saltar al contenido")}</a>
       <header>
         <NavLink className="brand" to="/">
           {d.settings.logo ? (
@@ -98,12 +99,12 @@ function App() {
             <small>APP</small>
           </strong>
         </NavLink>
-        <nav aria-label="Navegación principal">
+        <nav aria-label={t("Navegación principal")}>
           {[
-            ["/", "Inicio", Home],
-            ["/videos", "Videos", Film],
-            ["/recursos", "Descargas", Box],
-            ["/bio", "BIO", UserRound],
+            ["/", t("Inicio"), Home],
+            ["/videos", t("Videos"), Film],
+            ["/recursos", t("Descargas"), Box],
+            ["/bio", t("BIO"), UserRound],
           ].map(([path, name, Icon]: any) => (
             <NavLink key={path} to={path} end={path === "/"}>
               <Icon size={18} />
@@ -113,7 +114,7 @@ function App() {
         </nav>
         <button
           className="theme"
-          aria-label="Cambiar tema"
+          aria-label={t("Cambiar tema")}
           onClick={() => {
             const v = (theme || d.settings.theme) === "dark" ? "light" : "dark";
             T(v);
@@ -146,8 +147,8 @@ function App() {
               path="*"
               element={
                 <div>
-                  <h1>Esta página no existe.</h1>
-                  <NavLink to="/">Volver al inicio</NavLink>
+                  <h1>{t("Esta página no existe.")}</h1>
+                  <NavLink to="/">{t("Volver al inicio")}</NavLink>
                 </div>
               }
             />
@@ -157,7 +158,7 @@ function App() {
       <footer>
         <div>
           <strong>{d.settings.name}</strong>
-          <p>Crear. Jugar. Compartir.</p>
+          <p>{t("Crear. Jugar. Compartir.")}</p>
         </div>
         <div>
           {d.settings.links.map((l, i) => (
@@ -166,9 +167,9 @@ function App() {
             </a>
           ))}
         </div>
-        <span>
-          Hecho para la comunidad. · <NavLink to="/editor">Administrar</NavLink>
+        <span>{t("Hecho para la comunidad. ·")} {" "}<NavLink to="/editor">{t("Administrar")}</NavLink>
         </span>
+        <LanguageSelector />
       </footer>
     </>
   );

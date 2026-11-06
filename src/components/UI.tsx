@@ -1,3 +1,4 @@
+import { t, useLanguage, localeFor } from "../services/i18n";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, FolderOpen, Play } from "lucide-react";
 import { Data, Resource, asset, safeHref } from "../services/schema";
@@ -38,8 +39,8 @@ export function ResourceCard({ r, d }: { r: Resource; d: Data }) {
       <Picture src={r.image} alt={r.title} />
       <div className="cardbody">
         <small>
-          {d.categories.find((c) => c.id === r.category)?.name} ·{" "}
-          {r.format || "Recurso"}
+          {t(d.categories.find((c) => c.id === r.category)?.name || "")} ·{" "}
+          {r.format || t("Recurso")}
         </small>
         <h3>
           {r.title} <ArrowUpRight size={18} />
@@ -50,6 +51,7 @@ export function ResourceCard({ r, d }: { r: Resource; d: Data }) {
   );
 }
 export function BioView({ d }: { d: Data }) {
+  useLanguage();
   return (
     <>
       <div className="bio-head">
@@ -59,14 +61,14 @@ export function BioView({ d }: { d: Data }) {
           <div className="monogram">F.</div>
         )}
         <div>
-          <span className="eyebrow">DETRÁS DE LAS CREACIONES</span>
+          <span className="eyebrow">{t("DETRÁS DE LAS CREACIONES")}</span>
           <h1>{d.bio.name}</h1>
-          <p>{d.bio.channelDescription}</p>
+          <p>{t(d.bio.channelDescription)}</p>
         </div>
       </div>
       <section className="panel prose">
-        <h2>Un poco sobre mí</h2>
-        <p>{d.bio.description}</p>
+        <h2>{t("Un poco sobre mí")}</h2>
+        <p>{t(d.bio.description)}</p>
         <div className="actions">
           {d.bio.links.map((l, i) => (
             <a
@@ -84,16 +86,14 @@ export function BioView({ d }: { d: Data }) {
       </section>
       {!!d.bio.projects.length && (
         <>
-          <h2>Proyectos destacados</h2>
+          <h2>{t("Proyectos destacados")}</h2>
           <div className="grid">
             {d.bio.projects.map((p, i) => (
               <article className="panel" key={i}>
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
+                <h3>{t(p.title)}</h3>
+                <p>{t(p.description)}</p>
                 {p.url && (
-                  <a href={safeHref(p.url)} target="_blank" rel="noreferrer">
-                    Ver proyecto ↗
-                  </a>
+                  <a href={safeHref(p.url)} target="_blank" rel="noreferrer">{t("Ver proyecto ↗")}</a>
                 )}
               </article>
             ))}
@@ -104,19 +104,18 @@ export function BioView({ d }: { d: Data }) {
   );
 }
 export function VideosView({ d, limit }: { d: Data; limit?: number }) {
+  const language = useLanguage();
   const [playing, setPlaying] = useState("");
   return (
     <>
       {d.videos.error && (
-        <p role="status" className="notice">
-          La última actualización falló. Se conserva el contenido disponible.
-        </p>
+        <p role="status" className="notice">{t("La última actualización falló. Se conserva el contenido disponible.")}</p>
       )}
       {!d.videos.items.length ? (
-        <Empty title="Los próximos videos, acá">
+        <Empty title={t("Los próximos videos, acá")}>
           {d.settings.channelId
-            ? "Todavía no hay videos disponibles."
-            : "El canal todavía no está configurado."}
+            ? t("Todavía no hay videos disponibles.")
+            : t("El canal todavía no está configurado.")}
         </Empty>
       ) : (
         <div className="grid">
@@ -136,7 +135,7 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                   <button
                     className="video-cover"
                     onClick={() => setPlaying(v.id)}
-                    aria-label={"Reproducir " + v.title}
+                    aria-label={t("Reproducir ") + v.title}
                   >
                     <Picture src={v.thumbnail} alt="" />
                     <span>
@@ -145,16 +144,14 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                   </button>
                 )}
                 <div className="cardbody">
-                  {v.date && <small>{new Date(v.date).toLocaleDateString("es-AR")}</small>}
+                  {v.date && <small>{new Date(v.date).toLocaleDateString(localeFor(language))}</small>}
                   <h3>{v.title}</h3>
                   <p>{v.description.slice(0, 160)}</p>
                   <a
                     href={"https://www.youtube.com/watch?v=" + v.id}
                     target="_blank"
                     rel="noreferrer"
-                  >
-                    Abrir en YouTube ↗
-                  </a>
+                  >{t("Abrir en YouTube ↗")}</a>
                 </div>
               </article>
             ))}

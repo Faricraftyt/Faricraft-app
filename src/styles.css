@@ -924,3 +924,13 @@ fieldset:disabled {
   height: 170px;
   object-fit: contain;
 }
+
+.language-picker { position: relative; align-self: center; }
+footer .language-picker { display: block; }
+.language-trigger { gap: 10px; min-width: 165px; justify-content: space-between; }
+.language-picker img { width: 26px; height: 18px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+footer .language-options { position: absolute; bottom: calc(100% + 8px); right: 0; display: flex; flex-direction: column; gap: 3px; min-width: 190px; padding: 6px; border-radius: 12px; background: var(--bg, #161822); color: inherit; border: 1px solid currentColor; box-shadow: 0 8px 30px #0004; z-index: 20; }
+.language-options button { display: flex; gap: 10px; align-items: center; text-align: left; padding: 10px; border-radius: 7px; background: transparent; color: inherit; border: 0; width: 100%; cursor: pointer; }
+.language-options button span { flex: 1; }
+.language-options button:hover, .language-options button[aria-pressed="true"] { background: #8193ee26; }
+.language-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
