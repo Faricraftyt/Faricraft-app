@@ -1,32 +1,89 @@
-"""Refresh official YouTube feed without credentials; preserve last good data on failure."""
-import json, pathlib, re, urllib.request, xml.etree.ElementTree as ET
+"""Index every public channel upload without downloading media or using API keys."""
+import json
+import pathlib
+import re
 from datetime import datetime, timezone
-ROOT=pathlib.Path(__file__).resolve().parents[1]
+from urllib.parse import urlparse
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+
+
+def channel_url(settings):
+    url = settings.get("channelUrl", "").rstrip("/")
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.hostname not in ("www.youtube.com", "youtube.com"):
+        raise ValueError("Configurá una dirección HTTPS de YouTube válida.")
+    path = re.sub(r"/(videos|shorts|streams|featured)/?$", "", parsed.path)
+    if not re.fullmatch(r"/(@[\w.-]+|channel/UC[\w-]{22}|c/[\w.-]+|user/[\w.-]+)", path):
+        raise ValueError("Configurá la dirección del canal, no la de un video.")
+    return "https://www.youtube.com" + path
+
+
+def fetch_catalog(url):
+    from yt_dlp import YoutubeDL
+    # A channel root traverses videos, Shorts and streams, including continuations.
+    with YoutubeDL({
+        "extract_flat": True,
+        "skip_download": True,
+        "quiet": True,
+        "retries": 3,
+        "extractor_retries": 3,
+        "socket_timeout": 30,
+        "extractor_args": {"youtubetab": {"approximate_date": ["true"]}},
+    }) as youtube:
+        return youtube.extract_info(url, download=False)
+
+
+def entries(info):
+    if not isinstance(info, dict):
+        return
+    if "entries" in info:
+        for child in info["entries"] or []:
+            yield from entries(child)
+    else:
+        yield info
+
+
 def refresh(root=ROOT, fetch=None):
-    folder=root/'public/data'; target=folder/'videos.json'
-    settings=json.loads((folder/'settings.json').read_text())
-    previous=json.loads(target.read_text())
-    channel=settings.get('channelId','')
+    folder = root / "public/data"
+    target = folder / "videos.json"
+    settings = json.loads((folder / "settings.json").read_text(encoding="utf-8"))
+    previous = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {"items": [], "updatedAt": None}
     try:
-        if not re.fullmatch(r'UC[\w-]{22}',channel):
-            raise ValueError('Configuración pendiente: agregá un Channel ID válido en settings.json.')
-        url='https://www.youtube.com/feeds/videos.xml?channel_id='+channel
-        if fetch: payload=fetch(url)
-        else:
-            request=urllib.request.Request(url,headers={'User-Agent':'FaricraftApp/1.0'})
-            with urllib.request.urlopen(request,timeout=30) as response: payload=response.read(2_000_000)
-        feed=ET.fromstring(payload)
-        ns={'a':'http://www.w3.org/2005/Atom','yt':'http://www.youtube.com/xml/schemas/2015','m':'http://search.yahoo.com/mrss/'}
-        if feed.tag!='{http://www.w3.org/2005/Atom}feed': raise ValueError('La respuesta no es un feed Atom.')
-        items=[]
-        for entry in feed.findall('a:entry',ns):
-            vid=entry.findtext('yt:videoId','',ns)
-            if not re.fullmatch(r'[\w-]{11}',vid): continue
-            items.append({'id':vid,'title':entry.findtext('a:title','',ns),'description':entry.findtext('m:group/m:description','',ns),'date':entry.findtext('a:published','',ns),'thumbnail':f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'})
-        data={'updatedAt':datetime.now(timezone.utc).isoformat(),'error':None,'items':sorted(items,key=lambda v:v['date'],reverse=True)}
+        catalog = (fetch or fetch_catalog)(channel_url(settings))
+        items = {}
+        for video in entries(catalog):
+            vid = video.get("id", "")
+            if not re.fullmatch(r"[\w-]{11}", vid) or not video.get("title"):
+                continue
+            if video.get("availability") in ("private", "premium_only", "subscriber_only", "needs_auth"):
+                continue
+            timestamp = video.get("timestamp") or video.get("release_timestamp")
+            date = datetime.fromtimestamp(timestamp, timezone.utc).isoformat() if timestamp else ""
+            items[vid] = {
+                "id": vid, "title": video["title"],
+                "description": video.get("description") or "",
+                "date": date,
+                "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+            }
+        if not items:
+            raise ValueError("YouTube no devolvió videos públicos; se conserva el catálogo anterior.")
+        data = {
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+            "error": None,
+            "items": sorted(items.values(), key=lambda video: video["date"], reverse=True),
+        }
     except Exception as exc:
-        data={**previous,'error':str(exc)}
-        print('Aviso: se conservan los videos anteriores.',str(exc))
-    temp=target.with_suffix('.tmp');temp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');temp.replace(target)
+        data = {**previous, "error": str(exc)}
+        print("Aviso: se conservan los videos anteriores.", str(exc))
+    temp = target.with_suffix(".tmp")
+    temp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temp.replace(target)
     return data
-if __name__=='__main__':refresh()
+
+
+if __name__ == "__main__":
+    result = refresh()
+    print(f"Videos disponibles: {len(result['items'])}")
+    if result.get("error"):
+        raise SystemExit(1)

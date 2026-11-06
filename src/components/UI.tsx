@@ -145,7 +145,7 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                   </button>
                 )}
                 <div className="cardbody">
-                  <small>{new Date(v.date).toLocaleDateString("es-AR")}</small>
+                  {v.date && <small>{new Date(v.date).toLocaleDateString("es-AR")}</small>}
                   <h3>{v.title}</h3>
                   <p>{v.description.slice(0, 160)}</p>
                   <a

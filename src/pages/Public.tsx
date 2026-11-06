@@ -30,7 +30,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       <>
         <span className="eyebrow">EL CANAL</span>
         <h1>Una aventura más.</h1>
-        <p className="lead">Los últimos videos, en un solo lugar.</p>
+        <p className="lead">Todos los videos del canal, en un solo lugar.</p>
         <VideosView d={d} />
         {d.settings.channelUrl && (
           <a
