@@ -18,6 +18,16 @@
     "size": "2.66 MB",
     "url": "https://drive.google.com/uc?export=download&id=1J9jHnwmogY5_aIg9LldkanH-bS4eEduB",
     "published": true,
-    "order": 0
+    "order": 0,
+    "viewUrl": "https://drive.google.com/file/d/1J9jHnwmogY5_aIg9LldkanH-bS4eEduB/view",
+    "editions": {
+      "en": {
+        "title": "Escape from Sector 42",
+        "format": "PDF",
+        "size": "5.00 MB",
+        "url": "https://raw.githubusercontent.com/Faricraftyt/Faricraft-app/94757bd5cf9aeccffd82072562c41ce4dd851943/public/downloads/f490460a-a0f4-49f8-8f58-cb1f8d4b9dc9/Escape_from_Sector_42_Corrected.pdf",
+        "viewUrl": "https://faricraftyt.github.io/Faricraft-app/downloads/f490460a-a0f4-49f8-8f58-cb1f8d4b9dc9/Escape_from_Sector_42_Corrected.pdf"
+      }
+    }
   }
 ]
