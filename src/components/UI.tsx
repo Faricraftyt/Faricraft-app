@@ -1,3 +1,4 @@
+import { videoTitle } from "../services/videoTitles";
 import { t, useLanguage, localeFor } from "../services/i18n";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, FolderOpen, Play } from "lucide-react";
@@ -122,11 +123,13 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
           {[...d.videos.items]
             .sort((a, b) => b.date.localeCompare(a.date))
             .slice(0, limit)
-            .map((v) => (
+            .map((v) => {
+              const title = videoTitle(v, language);
+              return (
               <article className="card" key={v.id}>
                 {playing === v.id ? (
                   <iframe
-                    title={v.title}
+                    title={title}
                     src={"https://www.youtube-nocookie.com/embed/" + v.id}
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -135,7 +138,7 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                   <button
                     className="video-cover"
                     onClick={() => setPlaying(v.id)}
-                    aria-label={t("Reproducir ") + v.title}
+                    aria-label={t("Reproducir ") + title}
                   >
                     <Picture src={v.thumbnail} alt="" />
                     <span>
@@ -145,7 +148,7 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                 )}
                 <div className="cardbody">
                   {v.date && <small>{new Date(v.date).toLocaleDateString(localeFor(language))}</small>}
-                  <h3>{v.title}</h3>
+                  <h3>{title}</h3>
                   <p>{v.description.slice(0, 160)}</p>
                   <a
                     href={"https://www.youtube.com/watch?v=" + v.id}
@@ -154,7 +157,8 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                   >{t("Abrir en YouTube ↗")}</a>
                 </div>
               </article>
-            ))}
+              );
+            })}
         </div>
       )}
     </>

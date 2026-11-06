@@ -4,7 +4,7 @@ import { asset } from "../services/schema";
 import { Language, setLanguage, t, useLanguage } from "../services/i18n";
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: "es", label: "Español", flag: "ar" },
-  { code: "en", label: "English", flag: "gb" },
+  { code: "en", label: "English", flag: "us" },
   { code: "pt", label: "Português", flag: "br" },
 ];
 export function LanguageSelector() {

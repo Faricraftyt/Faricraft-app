@@ -71,6 +71,7 @@ export const schemas = {
       z.object({
         id: z.string().regex(/^[\w-]{11}$/),
         title: z.string(),
+        titles: z.object({ es: z.string().optional(), en: z.string().optional(), pt: z.string().optional() }).optional(),
         description: z.string(),
         date: z.string(),
         thumbnail: url,

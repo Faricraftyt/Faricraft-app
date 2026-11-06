@@ -37,22 +37,26 @@ def fetch_catalog(url):
     }
     with YoutubeDL(options) as youtube:
         catalog = youtube.extract_info(url, download=False)
-    # Relative publication dates are only parsed reliably from English metadata.
-    # Fetch dates separately, keeping every Spanish title and description intact.
-    try:
-        date_options = {**options, "extractor_args": {
-            "youtube": {"lang": ["en"]},
-            "youtubetab": {"approximate_date": ["true"]},
-        }, "http_headers": {"Accept-Language": "en-US,en;q=0.9"}}
-        with YoutubeDL(date_options) as youtube:
-            dates = {video.get("id"): video for video in entries(youtube.extract_info(url, download=False))}
-        for video in entries(catalog):
-            source = dates.get(video.get("id"), {})
-            for key in ("timestamp", "release_timestamp"):
-                if not video.get(key) and source.get(key):
-                    video[key] = source[key]
-    except Exception as exc:
-        print("Aviso: no se pudieron actualizar las fechas.", str(exc))
+    # Keep the Spanish catalog canonical; join translated titles by video ID.
+    # English also supplies parseable relative publication dates.
+    for language in ("en", "pt"):
+        try:
+            localized_options = {**options, "extractor_args": {
+                "youtube": {"lang": [language]},
+                "youtubetab": {"approximate_date": ["true"]},
+            }, "http_headers": {"Accept-Language": language}}
+            with YoutubeDL(localized_options) as youtube:
+                localized = {video.get("id"): video for video in entries(youtube.extract_info(url, download=False))}
+            for video in entries(catalog):
+                source = localized.get(video.get("id"), {})
+                if source.get("title"):
+                    video.setdefault("titles", {})[language] = source["title"]
+                if language == "en":
+                    for key in ("timestamp", "release_timestamp"):
+                        if not video.get(key) and source.get(key):
+                            video[key] = source[key]
+        except Exception as exc:
+            print(f"Aviso: no se pudo actualizar el idioma {language}.", str(exc))
     return catalog
 
 
@@ -73,6 +77,7 @@ def refresh(root=ROOT, fetch=None):
     previous = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {"items": [], "updatedAt": None}
     try:
         catalog = (fetch or fetch_catalog)(channel_url(settings))
+        previous_titles = {video["id"]: video.get("titles", {}) for video in previous.get("items", [])}
         previous_dates = {video["id"]: video.get("date", "") for video in previous.get("items", [])}
         items = {}
         for video in entries(catalog):
@@ -85,6 +90,7 @@ def refresh(root=ROOT, fetch=None):
             date = datetime.fromtimestamp(timestamp, timezone.utc).isoformat() if timestamp else previous_dates.get(vid, "")
             items[vid] = {
                 "id": vid, "title": video["title"],
+                "titles": {**previous_titles.get(vid, {}), **video.get("titles", {}), "es": video["title"]},
                 "description": video.get("description") or "",
                 "date": date,
                 "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",

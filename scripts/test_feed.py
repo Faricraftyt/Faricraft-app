@@ -67,11 +67,13 @@ class LanguageTests(unittest.TestCase):
         client.extract_info.side_effect = [
             {"entries": [{"id": "abcdefghijk", "title": "Título en español"}]},
             {"entries": [{"id": "abcdefghijk", "title": "English title", "timestamp": 1700000000}]},
+            {"entries": [{"id": "abcdefghijk", "title": "Título em português"}]},
         ]
         with patch.dict(sys.modules, {"yt_dlp": module}):
             result = fetch_catalog("https://www.youtube.com/@faricraftyt")
         self.assertEqual(result["entries"][0]["title"], "Título en español")
         self.assertEqual(result["entries"][0]["timestamp"], 1700000000)
+        self.assertEqual(result["entries"][0]["titles"], {"en": "English title", "pt": "Título em português"})
 
 
 if __name__ == "__main__": unittest.main()
