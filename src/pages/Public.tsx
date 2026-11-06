@@ -103,13 +103,9 @@ export default function Public({ d, page }: { d: Data; page: string }) {
     return (
       <>
         <span className="eyebrow">HECHO PARA COMPARTIR</span>
-        <h1>
-          Tu próxima creación
-          <br />
-          empieza acá.
-        </h1>
+        <h1>Descarga todos los recursos</h1>
         <p className="lead">
-          Wallpapers, renders y herramientas para llevarte a tu mundo.
+          Todos los archivos y proyectos que te enseño en mi canal.. o no
         </p>
         <div className="toolbar">
           <label className="search">
