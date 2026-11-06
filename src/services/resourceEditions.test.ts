@@ -49,3 +49,10 @@ test("edition metadata survives validation, draft persistence and JSON publicati
   source.resources[0].editions.pt.url = "javascript:alert(1)";
   assert.throws(() => validate(source));
 });
+test("pasted reader and edition URLs are trimmed and upgraded to HTTPS", () => {
+  const saved = resource.parse({ ...base(), viewUrl: " http://fliphtml5.com/es ", editions: { en: { url: " https://example.com/en.pdf\n", viewUrl: " http://fliphtml5.com/en " } } });
+  assert.equal(saved.viewUrl, "https://fliphtml5.com/es");
+  assert.equal(resourceForLanguage(saved, "en").viewUrl, "https://fliphtml5.com/en");
+  assert.equal(resourceForLanguage(saved, "en").url, "https://example.com/en.pdf");
+  assert.throws(() => resource.parse({ ...base(), editions: { en: { viewUrl: "javascript:alert(1)" } } }));
+});

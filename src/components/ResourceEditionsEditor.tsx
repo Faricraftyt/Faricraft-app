@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MutableRefObject } from "react";
 import type { z } from "zod";
 import { Resource, resourceEdition } from "../services/schema";
 type Edition = z.infer<typeof resourceEdition>;
 const languages = [{ code: "en", label: "Inglés" }, { code: "pt", label: "Portugués" }] as const;
-export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onBusy, onPending }: {
+export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onBusy, onPending, saveRef }: {
+  saveRef: MutableRefObject<(() => Promise<Resource>) | null>;
   resource: Resource;
   book: boolean;
   onChange: (resource: Resource) => void;
@@ -17,6 +18,24 @@ export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onB
   const [message, setMessage] = useState("");
   useEffect(() => { onPending(Object.values(files).some(Boolean)); }, [files, onPending]);
   useEffect(() => () => onPending(false), [onPending]);
+  saveRef.current = async () => {
+    let next = resource;
+    for (const { code } of languages) {
+      const file = files[code];
+      if (!file) continue;
+      setMessage("Subiendo edición de " + code + " a GitHub Releases…");
+      const url = await onUpload(file, (next.editions?.[code]?.title || next.title) + " - " + code);
+      next = { ...next, editions: { ...next.editions, [code]: {
+        ...next.editions?.[code], url,
+        format: file.name.split(".").pop()?.toUpperCase() || "",
+        size: (file.size / 1024 / 1024).toFixed(2) + " MB",
+      } } };
+      onChange(next);
+      setFiles(current => ({ ...current, [code]: undefined }));
+    }
+    return next;
+  };
+  useEffect(() => () => { saveRef.current = null; }, [saveRef]);
   const edition = resource.editions?.[language] || {};
   const update = (value: Partial<Edition>) => onChange({ ...resource,
     editions: { ...resource.editions, [language]: { ...edition, ...value } },

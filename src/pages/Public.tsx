@@ -74,7 +74,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               rel="noreferrer"
             >
               <Download size={18} />{t(isBook(r.category, d.categories) && r.format.toUpperCase() === "PDF" ? "Descargar PDF" : "Descargar archivo")}</a>
-            {isBook(r.category, d.categories) && r.viewUrl && <a className="button" href={r.viewUrl} target="_blank" rel="noreferrer">{t("Ver online")} ↗</a>}
+            {r.viewUrl && <a className="button" href={r.viewUrl} target="_blank" rel="noreferrer">{t("Ver online")} ↗</a>}
             </div>
             <p className="muted">{t("Se abrirá el enlace público del archivo.")}</p>
           </section>

@@ -2,6 +2,8 @@ import { z } from "zod";
 const text = z.string().max(10000);
 const url = z
   .string()
+  .trim()
+  .transform(v => v.replace(/^http:\/\//i, "https://"))
   .refine(
     (v) => !v || /^https:\/\/[^\s]+$/.test(v),
     "Usá una URL HTTPS pública",

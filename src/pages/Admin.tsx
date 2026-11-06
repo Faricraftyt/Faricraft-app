@@ -1,7 +1,7 @@
 import { ResourceEditionsEditor } from "../components/ResourceEditionsEditor";
 import { isBook, resourceForLanguage } from "../services/resourceEditions";
 import type { Language } from "../services/i18n";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Download, Plus, LogOut, Save, Trash2, Eye } from "lucide-react";
 import {
@@ -152,6 +152,8 @@ export default function Admin({
     [editing, E] = useState<Resource | null>(null),
     [preview, P] = useState(false),
     [busy, B] = useState(false);
+  const saveEditions = useRef<(() => Promise<Resource>) | null>(null);
+  const [resourceError, setResourceError] = useState("");
   const [pendingEditions, setPendingEditions] = useState(false);
   const [previewLanguage, setPreviewLanguage] = useState<Language>("es");
   const previewResource = editing ? resourceForLanguage(editing, previewLanguage) : null;
@@ -243,16 +245,21 @@ export default function Admin({
       order: d.resources.length,
     });
   const saveResource = () =>
-    safe(() => {
+    safe(async () => {
       if (!editing) return;
-      const next = {
-        ...d,
-        resources: [...d.resources.filter((r) => r.id !== editing.id), editing],
-      };
-      validate(next);
-      set("resources", next.resources);
-      E(null);
-      M("Recurso guardado en el borrador local.");
+      setResourceError("");
+      try {
+        const saved = saveEditions.current ? await saveEditions.current() : editing;
+        const next = validate({
+          ...d,
+          resources: [...d.resources.filter((r) => r.id !== saved.id), saved],
+        });
+        set("resources", next.resources);
+        E(null);
+        M("Recurso guardado en el borrador local. Pulsá Publicar cambios para mostrarlo en la página.");
+      } catch (error) {
+        setResourceError(error instanceof Error ? error.message : "No se pudo guardar el recurso.");
+      }
     });
   const exportAll = () =>
     safe(async () => {
@@ -518,14 +525,14 @@ export default function Admin({
                       {previewResource.format} · {previewResource.size}
                     </p>
                     <p>{previewResource.url || "Enlace público pendiente"}</p>
-                    {isBook(editing.category, d.categories) && previewResource.viewUrl && <a className="button" href={previewResource.viewUrl} target="_blank" rel="noreferrer">Ver online ↗</a>}
+                    {previewResource.viewUrl && <a className="button" href={previewResource.viewUrl} target="_blank" rel="noreferrer">Ver online ↗</a>}
                   </div>
                 </div>
               ) : (
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    if (!busy && !pendingEditions) saveResource();
+                    if (!busy) saveResource();
                   }}
                 >
                   <fieldset className="resource-fields" disabled={busy}>
@@ -682,8 +689,8 @@ export default function Admin({
                   )}
                   <ResourceEditionsEditor key={editing.id} resource={editing}
                     book={isBook(editing.category, d.categories)} onChange={E}
-                    onUpload={(file, title) => session.uploadRelease(file, title)} onBusy={B} onPending={setPendingEditions} />
-                  {pendingEditions && <p role="status">Subí o quitá el archivo de la edición antes de guardar o abrir la vista previa.</p>}
+                    onUpload={(file, title) => session.uploadRelease(file, title)} onBusy={B} onPending={setPendingEditions} saveRef={saveEditions} />
+                  {pendingEditions && <p role="status">Al guardar se subirán los archivos de las ediciones seleccionadas. La vista previa estará disponible después de subirlos.</p>}
                   <p className="muted">
                     {editing.published
                       ? "Se publicará al guardar los cambios en GitHub"
@@ -702,7 +709,8 @@ export default function Admin({
                     Visible después de publicar los cambios
                   </label>
                   <div className="actions">
-                    <button type="submit" className="primary" disabled={busy || pendingEditions}>
+                    {resourceError && <p role="alert">{resourceError}</p>}
+                    <button type="submit" className="primary" disabled={busy}>
                       <Save size={16} />
                       Guardar recurso
                     </button>
