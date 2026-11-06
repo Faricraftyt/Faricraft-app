@@ -1,3 +1,4 @@
+import { isBook, resourceForLanguage } from "../services/resourceEditions";
 import { t, useLanguage } from "../services/i18n";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -18,12 +19,13 @@ import {
   BioView,
 } from "../components/UI";
 export default function Public({ d, page }: { d: Data; page: string }) {
-  useLanguage();
+  const language = useLanguage();
   const [q, Q] = useState(""),
     [cat, C] = useState(""),
     [sort, S] = useState("new");
   const { id } = useParams();
   const published = d.resources
+    .map(resource => resourceForLanguage(resource, language))
     .filter((r) => r.published)
     .sort((a, b) => b.date.localeCompare(a.date));
   if (page === "bio") return <BioView d={d} />;
@@ -56,7 +58,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
               {t(d.categories.find((c) => c.id === r.category)?.name || "")}
             </span>
             <h1>{r.title}</h1>
-            <p className="prose">{r.description}</p>
+            {r.description && <p className="prose">{r.description}</p>}
             <div className="tags">
               {r.tags.map((t) => (
                 <span key={t}>{t}</span>
@@ -65,13 +67,15 @@ export default function Public({ d, page }: { d: Data; page: string }) {
             <p>
               {r.format} · {r.size} · {r.date}
             </p>
-            <a
+            <div className="actions"><a
               className="button primary"
               href={r.url}
               target="_blank"
               rel="noreferrer"
             >
-              <Download size={18} />{t("Descargar archivo")}</a>
+              <Download size={18} />{t(isBook(r.category, d.categories) && r.format.toUpperCase() === "PDF" ? "Descargar PDF" : "Descargar archivo")}</a>
+            {isBook(r.category, d.categories) && r.viewUrl && <a className="button" href={r.viewUrl} target="_blank" rel="noreferrer">{t("Ver online")} ↗</a>}
+            </div>
             <p className="muted">{t("Se abrirá el enlace público del archivo.")}</p>
           </section>
         </div>
@@ -85,7 +89,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       .filter(
         (r) =>
           (!cat || r.category === cat) &&
-          (r.title + " " + r.tags.join(" "))
+          (r.title + " " + r.description + " " + r.tags.join(" "))
             .toLowerCase()
             .includes(q.toLowerCase()),
       )

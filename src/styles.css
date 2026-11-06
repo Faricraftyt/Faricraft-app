@@ -934,3 +934,9 @@ footer .language-options { position: absolute; bottom: calc(100% + 8px); right: 
 .language-options button span { flex: 1; }
 .language-options button:hover, .language-options button[aria-pressed="true"] { background: #8193ee26; }
 .language-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.edition-editor { margin: 24px 0; padding: 20px; border: 1px solid var(--line); border-radius: 12px; min-width: 0; }
+.edition-editor legend { padding: 0 8px; font-weight: 700; }
+.edition-editor > label { display: block; margin: 16px 0; }
+.edition-editor button { margin: 6px; }
+.resource-fields { border: 0; padding: 0; margin: 0; min-width: 0; }

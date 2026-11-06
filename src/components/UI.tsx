@@ -1,3 +1,4 @@
+import { resourceForLanguage } from "../services/resourceEditions";
 import { videoTitle } from "../services/videoTitles";
 import { t, useLanguage, localeFor } from "../services/i18n";
 import { Link } from "react-router-dom";
@@ -34,7 +35,9 @@ export function Picture({ src, alt }: { src: string; alt: string }) {
     </div>
   );
 }
-export function ResourceCard({ r, d }: { r: Resource; d: Data }) {
+export function ResourceCard({ r: original, d }: { r: Resource; d: Data }) {
+  const language = useLanguage();
+  const r = resourceForLanguage(original, language);
   return (
     <Link className="card" to={"/recursos/" + r.id}>
       <Picture src={r.image} alt={r.title} />
@@ -46,7 +49,7 @@ export function ResourceCard({ r, d }: { r: Resource; d: Data }) {
         <h3>
           {r.title} <ArrowUpRight size={18} />
         </h3>
-        <p>{r.description.slice(0, 110)}</p>
+        {r.description && <p>{r.description.slice(0, 110)}</p>}
       </div>
     </Link>
   );

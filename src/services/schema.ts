@@ -17,11 +17,21 @@ export const link = z.object({
   label: z.string().min(1),
   url: url.refine(Boolean, "Falta la URL"),
 });
+export const resourceEdition = z.object({
+  title: z.string().max(200).optional(),
+  description: text.optional(),
+  url: url.optional(),
+  viewUrl: url.optional(),
+  format: text.optional(),
+  size: text.optional(),
+});
 export const resource = z
   .object({
     id: z.string().min(1),
     title: z.string().min(1).max(200),
-    description: text,
+    description: text.default(""),
+    viewUrl: url.optional(),
+    editions: z.object({ es: resourceEdition.optional(), en: resourceEdition.optional(), pt: resourceEdition.optional() }).optional(),
     category: z.string().min(1),
     image,
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
@@ -101,6 +111,8 @@ export const asset = (v: string) =>
 
 // Drafts may contain unfinished fields; exported/public data always use strict validation.
 function relax(s: z.ZodTypeAny): z.ZodTypeAny {
+  if (s instanceof z.ZodOptional) return relax(s.unwrap()).optional();
+  if (s instanceof z.ZodDefault) return relax(s.removeDefault()).default(s._def.defaultValue());
   if (s instanceof z.ZodEffects) return relax(s.innerType());
   if (s instanceof z.ZodString) return z.string();
   if (s instanceof z.ZodNumber) return z.number();

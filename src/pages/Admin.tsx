@@ -1,3 +1,6 @@
+import { ResourceEditionsEditor } from "../components/ResourceEditionsEditor";
+import { isBook, resourceForLanguage } from "../services/resourceEditions";
+import type { Language } from "../services/i18n";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Download, Plus, LogOut, Save, Trash2, Eye } from "lucide-react";
@@ -149,6 +152,9 @@ export default function Admin({
     [editing, E] = useState<Resource | null>(null),
     [preview, P] = useState(false),
     [busy, B] = useState(false);
+  const [pendingEditions, setPendingEditions] = useState(false);
+  const [previewLanguage, setPreviewLanguage] = useState<Language>("es");
+  const previewResource = editing ? resourceForLanguage(editing, previewLanguage) : null;
   const [files, F] = useState<Record<string, string>>({});
   const [undo, U] = useState<Data | null>(null);
   const dirty = json(d) !== json(remote);
@@ -492,33 +498,40 @@ export default function Admin({
                     ? "Editar recurso"
                     : "Nuevo recurso"}
                 </h2>
-                <button onClick={() => P(!preview)}>
+                <button disabled={busy || pendingEditions} onClick={() => P(!preview)}>
                   <Eye size={16} />
                   {preview ? "Formulario" : "Vista previa"}
                 </button>
               </div>
-              {preview ? (
+              {preview && <label>Idioma de la vista previa
+                <select value={previewLanguage} onChange={event => setPreviewLanguage(event.target.value as Language)}>
+                  <option value="es">Español</option><option value="en">Inglés</option><option value="pt">Portugués</option>
+                </select>
+              </label>}
+              {preview && previewResource ? (
                 <div className="detail">
-                  <Picture src={editing.image} alt={editing.title} />
+                  <Picture src={editing.image} alt={previewResource.title} />
                   <div>
-                    <h2>{editing.title || "Sin título"}</h2>
-                    <p>{editing.description}</p>
+                    <h2>{previewResource.title || "Sin título"}</h2>
+                    <p>{previewResource.description}</p>
                     <p>
-                      {editing.format} · {editing.size}
+                      {previewResource.format} · {previewResource.size}
                     </p>
-                    <p>{editing.url || "Enlace público pendiente"}</p>
+                    <p>{previewResource.url || "Enlace público pendiente"}</p>
+                    {isBook(editing.category, d.categories) && previewResource.viewUrl && <a className="button" href={previewResource.viewUrl} target="_blank" rel="noreferrer">Ver online ↗</a>}
                   </div>
                 </div>
               ) : (
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    saveResource();
+                    if (!busy && !pendingEditions) saveResource();
                   }}
                 >
+                  <fieldset className="resource-fields" disabled={busy}>
                   <div className="form-grid">
                     <Field
-                      label="Título"
+                      label="Título principal (español)"
                       required
                       value={editing.title}
                       onChange={(v) => E({ ...editing, title: v })}
@@ -565,10 +578,15 @@ export default function Admin({
                       onChange={(v) => E({ ...editing, tags: v.split(",") })}
                     />
                     <Field
-                      label="Enlace público de descarga (HTTPS)"
+                      label={isBook(editing.category, d.categories) ? "Enlace de descarga del PDF (HTTPS)" : "Enlace público de descarga (HTTPS)"}
                       value={editing.url}
                       onChange={(v) => E({ ...editing, url: v })}
                     />
+                    {isBook(editing.category, d.categories) && <Field
+                      label="Ver online: enlace principal (HTTPS, por ejemplo FlipHTML5)"
+                      value={editing.viewUrl || ""}
+                      onChange={viewUrl => E({ ...editing, viewUrl })}
+                    />}
                     <Field
                       label="Orden (menor primero)"
                       type="number"
@@ -594,7 +612,7 @@ export default function Admin({
                     />
                   </label>
                   <Field
-                    label="Descripción"
+                    label="Descripción principal (español, opcional)"
                     type="textarea"
                     value={editing.description}
                     onChange={(v) => E({ ...editing, description: v })}
@@ -662,6 +680,10 @@ export default function Admin({
                       </button>
                     </p>
                   )}
+                  <ResourceEditionsEditor key={editing.id} resource={editing}
+                    book={isBook(editing.category, d.categories)} onChange={E}
+                    onUpload={(file, title) => session.uploadRelease(file, title)} onBusy={B} onPending={setPendingEditions} />
+                  {pendingEditions && <p role="status">Subí o quitá el archivo de la edición antes de guardar o abrir la vista previa.</p>}
                   <p className="muted">
                     {editing.published
                       ? "Se publicará al guardar los cambios en GitHub"
@@ -680,7 +702,7 @@ export default function Admin({
                     Visible después de publicar los cambios
                   </label>
                   <div className="actions">
-                    <button type="submit" className="primary">
+                    <button type="submit" className="primary" disabled={busy || pendingEditions}>
                       <Save size={16} />
                       Guardar recurso
                     </button>
@@ -696,6 +718,7 @@ export default function Admin({
                       Cancelar
                     </button>
                   </div>
+                  </fieldset>
                 </form>
               )}
             </section>
@@ -791,7 +814,7 @@ export default function Admin({
       )}
       {tab === "BIO" && (
         <>
-          <button onClick={() => P(!preview)}>
+          <button disabled={busy || pendingEditions} onClick={() => P(!preview)}>
             <Eye size={16} />
             {preview ? "Volver al editor" : "Previsualizar BIO"}
           </button>

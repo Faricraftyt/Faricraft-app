@@ -338,5 +338,13 @@ export const translations: Record<string, { en: string; pt: string }> = {
   "Navegación principal": {
     "en": "Main navigation",
     "pt": "Navegação principal"
+  },
+  "Ver online": {
+    "en": "Read online",
+    "pt": "Ler online"
+  },
+  "Descargar PDF": {
+    "en": "Download PDF",
+    "pt": "Baixar PDF"
   }
 };
