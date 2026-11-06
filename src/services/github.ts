@@ -105,8 +105,9 @@ export class GitHubSession {
         cache: "no-store",
       });
     } catch {
-      throw Error(
-        "No se pudo contactar con GitHub. Revisá la conexión. Si estabas publicando, reconectá antes de reintentar para comprobar el estado real.",
+      throw new GitHubError(
+        "El navegador no pudo contactar con " + endpoint.hostname + ". Revisá la conexión o si una extensión está bloqueando la solicitud.",
+        0,
       );
     }
     if (!res.ok) {
@@ -321,7 +322,15 @@ export class GitHubSession {
         "name",
         file.name.replace(/[^a-zA-Z0-9._-]/g, "_") || "archivo",
       );
-      const asset = await this.api(upload.href, "POST", undefined, { file });
+      let asset;
+      try {
+        asset = await this.api(upload.href, "POST", undefined, { file });
+      } catch (error) {
+        // Releases binary uploads may be blocked by browser cross-origin rules.
+        // JSON requests to the main API use the same route as normal publication.
+        if (!(error instanceof GitHubError) || error.status !== 0) throw error;
+        return await this.uploadRepositoryFile(file, title);
+      }
       await this.api(this.root + "/releases/" + release.id, "PATCH", {
         draft: false,
       });
@@ -334,6 +343,29 @@ export class GitHubSession {
           " Se conserva el archivo local. Revisá Releases en GitHub: puede haber quedado un borrador sin publicar.",
       );
     }
+  }
+  private async uploadRepositoryFile(file: File, title: string): Promise<string> {
+    if (file.size > 25 * 1024 * 1024)
+      throw Error("La subida alternativa admite hasta 25 MB. Subí este archivo desde GitHub Releases y pegá su enlace de descarga.");
+    const head = (await this.api(this.root + "/git/ref/heads/" + branchPath(this.target.branch))).object.sha;
+    const parent = await this.api(this.root + "/git/commits/" + head);
+    const filename = file.name.replace(/[^a-zA-Z0-9._-]/g, "_") || "archivo";
+    const path = "public/downloads/" + crypto.randomUUID() + "/" + filename;
+    const blob = await this.api(this.root + "/git/blobs", "POST", {
+      content: await base64(file), encoding: "base64",
+    });
+    const tree = await this.api(this.root + "/git/trees", "POST", {
+      base_tree: parent.tree.sha,
+      tree: [{ path, mode: "100644", type: "blob", sha: blob.sha }],
+    });
+    const commit = await this.api(this.root + "/git/commits", "POST", {
+      message: "Subir archivo: " + (title || filename), tree: tree.sha, parents: [head],
+    });
+    await this.api(this.root + "/git/refs/heads/" + branchPath(this.target.branch), "PATCH", {
+      sha: commit.sha, force: false,
+    });
+    // Keep the metadata baseline: concurrent edits must still be detected on publish.
+    return "https://raw.githubusercontent.com/" + part(this.target.owner) + "/" + part(this.target.repo) + "/" + part(commit.sha) + "/" + path;
   }
   get actionsUrl() {
     return (

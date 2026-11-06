@@ -23,7 +23,7 @@ export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onB
     for (const { code } of languages) {
       const file = files[code];
       if (!file) continue;
-      setMessage("Subiendo edición de " + code + " a GitHub Releases…");
+      setMessage("Subiendo edición de " + code + " a GitHub…");
       const url = await onUpload(file, (next.editions?.[code]?.title || next.title) + " - " + code);
       next = { ...next, editions: { ...next.editions, [code]: {
         ...next.editions?.[code], url,
@@ -71,7 +71,7 @@ export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onB
     {files[language] && <p>Archivo seleccionado: {files[language]!.name} — pendiente de subir.
       <button type="button" onClick={async () => {
         const file = files[language]!;
-        setUploading(true); onBusy(true); setMessage("Subiendo a GitHub Releases…");
+        setUploading(true); onBusy(true); setMessage("Subiendo a GitHub…");
         try {
           const url = await onUpload(file, (edition.title || resource.title) + " - " + language);
           update({ url, format: file.name.split(".").pop()?.toUpperCase() || "", size: (file.size / 1024 / 1024).toFixed(2) + " MB" });
@@ -79,7 +79,7 @@ export function ResourceEditionsEditor({ resource, book, onChange, onUpload, onB
           setMessage("Archivo subido. Guardá el recurso y pulsá Publicar cambios para publicar esta edición.");
         } catch (error) { setMessage(error instanceof Error ? error.message : "No se pudo subir el archivo."); }
         finally { setUploading(false); onBusy(false); }
-      }}>Subir edición a GitHub Releases</button>
+      }}>Subir edición a GitHub</button>
       <button type="button" onClick={() => setFiles({ ...files, [language]: undefined })}>Quitar archivo seleccionado</button>
     </p>}
     <p role="status">{message}</p>

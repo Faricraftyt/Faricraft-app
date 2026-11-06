@@ -671,19 +671,19 @@ export default function Admin({
                               editing.id,
                             )) as File | undefined;
                             if (!file) throw Error("No hay archivo local.");
-                            M("Subiendo a GitHub Releases…");
+                            M("Subiendo a GitHub…");
                             const url = await session.uploadRelease(
                               file,
                               editing.title,
                             );
                             E({ ...editing, url });
                             M(
-                              "Archivo subido a Releases. Guardá el recurso y pulsá Publicar cambios para publicar su ficha.",
+                              "Archivo subido a GitHub. Guardá el recurso y pulsá Publicar cambios para publicar su ficha.",
                             );
                           })
                         }
                       >
-                        Subir archivo a GitHub Releases
+                        Subir archivo a GitHub
                       </button>
                     </p>
                   )}

@@ -27,8 +27,10 @@ function fixture() {
   let rejectPatch = false;
   let failAuth = false;
   let evilUpload = false;
+  let blockUpload = false;
   const mock: typeof fetch = async (input, options) => {
     const u = new URL(String(input));
+    if (blockUpload && u.hostname === "uploads.github.com") throw new TypeError("Failed to fetch");
     const path = u.pathname;
     const method = options?.method || "GET";
     const body =
@@ -110,6 +112,7 @@ function fixture() {
     setReject: () => (rejectPatch = true),
     setFail: () => (failAuth = true),
     setEvil: () => (evilUpload = true),
+    blockUpload: () => (blockUpload = true),
   };
 }
 test("repo parser rejects alternate hosts and injected paths", () => {
@@ -223,4 +226,25 @@ test("invalid publication is rejected before contacting GitHub", async () => {
   d.settings.channelUrl = "javascript:alert(1)";
   await assert.rejects(f.session.publish(d));
   assert.equal(f.log.length, before);
+});
+
+test("blocked binary uploads fall back to JSON Git API without overwriting metadata", async () => {
+  const f = fixture();
+  await f.session.connect();
+  f.blockUpload();
+  const before = structuredClone(f.session.snapshot);
+  const url = await f.session.uploadRelease(new File(["PDF bytes"], "English book.pdf"), "English book");
+  assert.match(url, /^https:\/\/raw\.githubusercontent\.com\/owner\/app\/new-commit\/public\/downloads\/[^/]+\/English_book\.pdf$/);
+  const blob = f.log.find(r => r.method === "POST" && r.path.endsWith("/git/blobs"))!;
+  assert.equal(blob.body.encoding, "base64");
+  assert.equal(Buffer.from(blob.body.content, "base64").toString(), "PDF bytes");
+  assert.equal(f.log.find(r => r.method === "PATCH")!.body.force, false);
+  assert.deepEqual(f.session.snapshot, before);
+  const draft = structuredClone(f.original);
+  draft.resources[0].editions = { en: { url } };
+  await f.session.publish(draft);
+});
+test("fallback rejects a branch race instead of returning an unpublished URL", async () => {
+  const f = fixture(); await f.session.connect(); f.blockUpload(); f.setReject();
+  await assert.rejects(f.session.uploadRelease(new File(["pdf"], "book.pdf"), "Book"), /GitHub no aceptó/);
 });
