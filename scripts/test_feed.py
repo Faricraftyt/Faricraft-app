@@ -52,10 +52,26 @@ class LanguageTests(unittest.TestCase):
         module = MagicMock()
         with patch.dict(sys.modules, {"yt_dlp": module}):
             fetch_catalog("https://www.youtube.com/@faricraftyt")
-        options = module.YoutubeDL.call_args.args[0]
+        options = module.YoutubeDL.call_args_list[0].args[0]
         self.assertEqual(options["extractor_args"]["youtube"]["lang"], ["es"])
         self.assertEqual(options["extractor_args"]["youtubetab"]["lang"], ["es"])
         self.assertIn("es", options["http_headers"]["Accept-Language"])
         self.assertTrue(options["skip_download"])
+
+    def test_spanish_titles_keep_dates_from_secondary_catalog(self):
+        from unittest.mock import patch, MagicMock
+        import sys
+        from update_videos import fetch_catalog
+        module = MagicMock()
+        client = module.YoutubeDL.return_value.__enter__.return_value
+        client.extract_info.side_effect = [
+            {"entries": [{"id": "abcdefghijk", "title": "Título en español"}]},
+            {"entries": [{"id": "abcdefghijk", "title": "English title", "timestamp": 1700000000}]},
+        ]
+        with patch.dict(sys.modules, {"yt_dlp": module}):
+            result = fetch_catalog("https://www.youtube.com/@faricraftyt")
+        self.assertEqual(result["entries"][0]["title"], "Título en español")
+        self.assertEqual(result["entries"][0]["timestamp"], 1700000000)
+
 
 if __name__ == "__main__": unittest.main()

@@ -22,7 +22,7 @@ def channel_url(settings):
 def fetch_catalog(url):
     from yt_dlp import YoutubeDL
     # A channel root traverses videos, Shorts and streams, including continuations.
-    with YoutubeDL({
+    options = {
         "extract_flat": True,
         "skip_download": True,
         "quiet": True,
@@ -34,8 +34,26 @@ def fetch_catalog(url):
             "youtube": {"lang": ["es"]},
             "youtubetab": {"lang": ["es"], "approximate_date": ["true"]},
         },
-    }) as youtube:
-        return youtube.extract_info(url, download=False)
+    }
+    with YoutubeDL(options) as youtube:
+        catalog = youtube.extract_info(url, download=False)
+    # Relative publication dates are only parsed reliably from English metadata.
+    # Fetch dates separately, keeping every Spanish title and description intact.
+    try:
+        date_options = {**options, "extractor_args": {
+            "youtube": {"lang": ["en"]},
+            "youtubetab": {"approximate_date": ["true"]},
+        }, "http_headers": {"Accept-Language": "en-US,en;q=0.9"}}
+        with YoutubeDL(date_options) as youtube:
+            dates = {video.get("id"): video for video in entries(youtube.extract_info(url, download=False))}
+        for video in entries(catalog):
+            source = dates.get(video.get("id"), {})
+            for key in ("timestamp", "release_timestamp"):
+                if not video.get(key) and source.get(key):
+                    video[key] = source[key]
+    except Exception as exc:
+        print("Aviso: no se pudieron actualizar las fechas.", str(exc))
+    return catalog
 
 
 def entries(info):
@@ -55,6 +73,7 @@ def refresh(root=ROOT, fetch=None):
     previous = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {"items": [], "updatedAt": None}
     try:
         catalog = (fetch or fetch_catalog)(channel_url(settings))
+        previous_dates = {video["id"]: video.get("date", "") for video in previous.get("items", [])}
         items = {}
         for video in entries(catalog):
             vid = video.get("id", "")
@@ -63,7 +82,7 @@ def refresh(root=ROOT, fetch=None):
             if video.get("availability") in ("private", "premium_only", "subscriber_only", "needs_auth"):
                 continue
             timestamp = video.get("timestamp") or video.get("release_timestamp")
-            date = datetime.fromtimestamp(timestamp, timezone.utc).isoformat() if timestamp else ""
+            date = datetime.fromtimestamp(timestamp, timezone.utc).isoformat() if timestamp else previous_dates.get(vid, "")
             items[vid] = {
                 "id": vid, "title": video["title"],
                 "description": video.get("description") or "",
