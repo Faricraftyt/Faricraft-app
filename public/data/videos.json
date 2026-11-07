@@ -1,17 +1,27 @@
 {
-  "updatedAt": "2026-11-06T19:33:03.190010+00:00",
+  "updatedAt": "2026-11-07T06:14:27.047138+00:00",
   "error": null,
   "items": [
     {
       "id": "-79h11APBkE",
-      "title": "Livestream 🔴-- I BEAT MINECRAFT for the FIRST TIME #1",
+      "title": "Directo 🔴-- Me PASO MINECRAFT por PRIMERA VEZ #1",
+      "titles": {
+        "en": "Livestream 🔴-- I BEAT MINECRAFT for the FIRST TIME #1",
+        "pt": "Ao vivo 🔴-- Estou zerando Minecraft pela primeira vez #1",
+        "es": "Directo 🔴-- Me PASO MINECRAFT por PRIMERA VEZ #1"
+      },
       "description": "",
-      "date": "2026-11-01T00:00:00+00:00",
+      "date": "2026-10-31T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/-79h11APBkE/hqdefault.jpg"
     },
     {
       "id": "5eWOMCVFpeA",
-      "title": "Live 🔴-- MINECRAFT DUNGEONS II #4",
+      "title": "Directo 🔴-- MINECRAFT DUNGEONS II #4",
+      "titles": {
+        "en": "Live 🔴-- MINECRAFT DUNGEONS II #4",
+        "pt": "Live 🔴-- MINECRAFT DUNGEONS II #4",
+        "es": "Directo 🔴-- MINECRAFT DUNGEONS II #4"
+      },
       "description": "",
       "date": "2026-10-10T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/5eWOMCVFpeA/hqdefault.jpg"
@@ -19,13 +29,23 @@
     {
       "id": "4rhaBT2lugA",
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #3",
+      "titles": {
+        "en": "Live Stream 🔴-- MINECRAFT DUNGEONS II #3",
+        "pt": "Live 🔴-- MINECRAFT DUNGEONS II #3",
+        "es": "Directo 🔴-- MINECRAFT DUNGEONS II #3"
+      },
       "description": "",
       "date": "2026-10-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/4rhaBT2lugA/hqdefault.jpg"
     },
     {
       "id": "BloFQcwMriI",
-      "title": "LIVE 🔴-- MINECRAFT DUNGEONS II #2",
+      "title": "Directo 🔴-- MINECRAFT DUNGEONS II #2",
+      "titles": {
+        "en": "LIVE 🔴-- MINECRAFT DUNGEONS II #2",
+        "pt": "Live 🔴-- MINECRAFT DUNGEONS II #2",
+        "es": "Directo 🔴-- MINECRAFT DUNGEONS II #2"
+      },
       "description": "",
       "date": "2026-10-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/BloFQcwMriI/hqdefault.jpg"
@@ -33,13 +53,23 @@
     {
       "id": "wE6Sfs9Bzls",
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #1",
+      "titles": {
+        "en": "Live 🔴-- MINECRAFT DUNGEONS II #1",
+        "pt": "Directo 🔴-- MINECRAFT DUNGEONS II #1",
+        "es": "Directo 🔴-- MINECRAFT DUNGEONS II #1"
+      },
       "description": "",
       "date": "2026-10-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/wE6Sfs9Bzls/hqdefault.jpg"
     },
     {
       "id": "2RMqKIKDYRE",
-      "title": "Hytale World #1 – I decided not to go out..",
+      "title": "Mundo Hytale #1 – Decidí no salir..",
+      "titles": {
+        "en": "Mundo Hytale #1 – Decidí no salir..",
+        "pt": "Mundo Hytale #1 – Decidí no salir..",
+        "es": "Mundo Hytale #1 – Decidí no salir.."
+      },
       "description": "",
       "date": "2026-02-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/2RMqKIKDYRE/hqdefault.jpg"
@@ -47,6 +77,11 @@
     {
       "id": "Ya_WyvmZyI4",
       "title": "MINECRAFT pero los AUTOS están hechos de MINERALES 🚗💎",
+      "titles": {
+        "en": "MINECRAFT pero los AUTOS están hechos de MINERALES 🚗💎",
+        "pt": "MINECRAFT pero los AUTOS están hechos de MINERALES 🚗💎",
+        "es": "MINECRAFT pero los AUTOS están hechos de MINERALES 🚗💎"
+      },
       "description": "",
       "date": "2026-01-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/Ya_WyvmZyI4/hqdefault.jpg"
@@ -54,6 +89,11 @@
     {
       "id": "N3OZ9z1Ld8w",
       "title": "PACK GFX de NAVIDAD que TE VA A ENCANTAR🎄 (Pack Completo)",
+      "titles": {
+        "en": "PACK GFX de NAVIDAD que TE VA A ENCANTAR🎄 (Pack Completo)",
+        "pt": "PACOTE DE NATAL (GRÁTIS!)",
+        "es": "PACK GFX de NAVIDAD que TE VA A ENCANTAR🎄 (Pack Completo)"
+      },
       "description": "",
       "date": "2026-01-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/N3OZ9z1Ld8w/hqdefault.jpg"
@@ -61,13 +101,23 @@
     {
       "id": "b5rcSGAQ8zA",
       "title": "Se puede sobrevivir SIN BLOQUES en Minecraft? - No-Block",
+      "titles": {
+        "en": "Se puede sobrevivir SIN BLOQUES en Minecraft? - No-Block",
+        "pt": "Dá para sobreviver SEM BLOCOS no Minecraft? - No-Block",
+        "es": "Se puede sobrevivir SIN BLOQUES en Minecraft? - No-Block"
+      },
       "description": "",
       "date": "2025-12-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/b5rcSGAQ8zA/hqdefault.jpg"
     },
     {
       "id": "5qGp7BBY7tk",
-      "title": "Pack Of SONGS For YOUTUBE 🎶 Music Used By YOUTUBERS! - Faricraft",
+      "title": "Pack De CANCIONES Sin COPYRIGHT Para YOUTUBE 🎶¡Música Que Usan Los YOUTUBERS! - Faricraft",
+      "titles": {
+        "en": "Pack Of SONGS For YOUTUBE 🎶 Music Used By YOUTUBERS! - Faricraft",
+        "pt": "Pacote de músicas sem direitos autorais para o YouTube 🎶Músicas usadas por YouTubers! - Faricraft",
+        "es": "Pack De CANCIONES Sin COPYRIGHT Para YOUTUBE 🎶¡Música Que Usan Los YOUTUBERS! - Faricraft"
+      },
       "description": "",
       "date": "2025-12-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/5qGp7BBY7tk/hqdefault.jpg"
@@ -75,6 +125,11 @@
     {
       "id": "wM84lRPt49o",
       "title": "FARICRAFT CITY | Trailer OFICIAL",
+      "titles": {
+        "en": "FARICRAFT CITY | Trailer OFICIAL",
+        "pt": "FARICRAFT CITY | Trailer OFICIAL",
+        "es": "FARICRAFT CITY | Trailer OFICIAL"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/wM84lRPt49o/hqdefault.jpg"
@@ -82,6 +137,11 @@
     {
       "id": "sNL0L9bsyeA",
       "title": "LA MEJOR MUSICA DE FONDO PARA VIDEOS - Faricraft",
+      "titles": {
+        "en": "LA MEJOR MUSICA DE FONDO PARA VIDEOS - Faricraft",
+        "pt": "LA MEJOR MUSICA DE FONDO PARA VIDEOS - Faricraft",
+        "es": "LA MEJOR MUSICA DE FONDO PARA VIDEOS - Faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/sNL0L9bsyeA/hqdefault.jpg"
@@ -89,6 +149,11 @@
     {
       "id": "y298Nagyf_M",
       "title": "Esta canción acompañará tus luchas😎— faricraft",
+      "titles": {
+        "en": "Esta canción acompañará tus luchas😎— faricraft",
+        "pt": "Esta canción acompañará tus luchas😎— faricraft",
+        "es": "Esta canción acompañará tus luchas😎— faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/y298Nagyf_M/hqdefault.jpg"
@@ -96,6 +161,11 @@
     {
       "id": "RdERTc6dWRw",
       "title": "FARICRAFT: La serie animada que necesitas ver",
+      "titles": {
+        "en": "FARICRAFT: La serie animada que necesitas ver",
+        "pt": "FARICRAFT: La serie animada que necesitas ver",
+        "es": "FARICRAFT: La serie animada que necesitas ver"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/RdERTc6dWRw/hqdefault.jpg"
@@ -103,6 +173,11 @@
     {
       "id": "cPR_-s3DdLE",
       "title": "El MEJOR Pack GFX de minecraft 2.0 - Faricraft",
+      "titles": {
+        "en": "El MEJOR Pack GFX de minecraft 2.0 - Faricraft",
+        "pt": "El MEJOR Pack GFX de minecraft 2.0 - Faricraft",
+        "es": "El MEJOR Pack GFX de minecraft 2.0 - Faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/cPR_-s3DdLE/hqdefault.jpg"
@@ -110,6 +185,11 @@
     {
       "id": "6CRlYAUWucw",
       "title": "Actualización de mi Pack pero ahora con edición y miniaturas - faricraft",
+      "titles": {
+        "en": "Actualización de mi Pack pero ahora con edición y miniaturas - faricraft",
+        "pt": "Actualización de mi Pack pero ahora con edición y miniaturas - faricraft",
+        "es": "Actualización de mi Pack pero ahora con edición y miniaturas - faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/6CRlYAUWucw/hqdefault.jpg"
@@ -117,6 +197,11 @@
     {
       "id": "kVLgprc9QSY",
       "title": "Pack de miniaturas +1000 objetos: EL MEJOR PACK DE MINIATURAS. (descarga DIRECTA) - faricraft",
+      "titles": {
+        "en": "Pack de miniaturas +1000 objetos: EL MEJOR PACK DE MINIATURAS. (descarga DIRECTA) - faricraft",
+        "pt": "Pack de miniaturas +1000 objetos: EL MEJOR PACK DE MINIATURAS. (descarga DIRECTA) - faricraft",
+        "es": "Pack de miniaturas +1000 objetos: EL MEJOR PACK DE MINIATURAS. (descarga DIRECTA) - faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/kVLgprc9QSY/hqdefault.jpg"
@@ -124,6 +209,11 @@
     {
       "id": "aoK_seMqE6k",
       "title": "faricon trailer - faricraft",
+      "titles": {
+        "en": "faricon trailer - faricraft",
+        "pt": "faricon trailer - faricraft",
+        "es": "faricon trailer - faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/aoK_seMqE6k/hqdefault.jpg"
@@ -131,6 +221,11 @@
     {
       "id": "-L2utqizudk",
       "title": "yo emocionado por la minecraft live-faricraft",
+      "titles": {
+        "en": "yo emocionado por la minecraft live-faricraft",
+        "pt": "yo emocionado por la minecraft live-faricraft",
+        "es": "yo emocionado por la minecraft live-faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/-L2utqizudk/hqdefault.jpg"
@@ -138,6 +233,11 @@
     {
       "id": "J04rFP2Kvnc",
       "title": "mis nuevos fondos de  pantalla personalizados - faricraft",
+      "titles": {
+        "en": "mis nuevos fondos de  pantalla personalizados - faricraft",
+        "pt": "mis nuevos fondos de  pantalla personalizados - faricraft",
+        "es": "mis nuevos fondos de  pantalla personalizados - faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/J04rFP2Kvnc/hqdefault.jpg"
@@ -145,6 +245,11 @@
     {
       "id": "ILgHTuE1S-A",
       "title": "stop motion  parte 1. historia de minecraft lego.-faricraft  #stopmotion #minecraft #games #juegos",
+      "titles": {
+        "en": "stop motion  parte 1. historia de minecraft lego.-faricraft  #stopmotion #minecraft #games #juegos",
+        "pt": "stop motion  parte 1. historia de minecraft lego.-faricraft  #stopmotion #minecraft #games #juegos",
+        "es": "stop motion  parte 1. historia de minecraft lego.-faricraft  #stopmotion #minecraft #games #juegos"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/ILgHTuE1S-A/hqdefault.jpg"
@@ -152,6 +257,11 @@
     {
       "id": "-5zz3CPhdvk",
       "title": "top 10 paginas inutiles para perder el tiempo-faricraft",
+      "titles": {
+        "en": "top 10 paginas inutiles para perder el tiempo-faricraft",
+        "pt": "top 10 paginas inutiles para perder el tiempo-faricraft",
+        "es": "top 10 paginas inutiles para perder el tiempo-faricraft"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/-5zz3CPhdvk/hqdefault.jpg"
@@ -159,6 +269,11 @@
     {
       "id": "zntp4WUbutE",
       "title": "mejores videos del canal 2024",
+      "titles": {
+        "en": "mejores videos del canal 2024",
+        "pt": "mejores videos del canal 2024",
+        "es": "mejores videos del canal 2024"
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/zntp4WUbutE/hqdefault.jpg"
@@ -166,6 +281,11 @@
     {
       "id": "_WTmZ8XwbKQ",
       "title": "🔴en directo. retos en directo.",
+      "titles": {
+        "en": "🔴en directo. retos en directo.",
+        "pt": "🔴en directo. retos en directo.",
+        "es": "🔴en directo. retos en directo."
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/_WTmZ8XwbKQ/hqdefault.jpg"
@@ -173,6 +293,11 @@
     {
       "id": "y9aE9VHKlbA",
       "title": "🔴en directo. hablamos de faricraft 2025, y de que pasara.",
+      "titles": {
+        "en": "🔴en directo. hablamos de faricraft 2025, y de que pasara.",
+        "pt": "🔴en directo. hablamos de faricraft 2025, y de que pasara.",
+        "es": "🔴en directo. hablamos de faricraft 2025, y de que pasara."
+      },
       "description": "",
       "date": "2025-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/y9aE9VHKlbA/hqdefault.jpg"
@@ -180,6 +305,11 @@
     {
       "id": "Tf0qsEJNpIo",
       "title": "Minecraft Bundles of Bravery - Trailer",
+      "titles": {
+        "en": "Minecraft Bundles of Bravery - Trailer",
+        "pt": "Minecraft Bundles of Bravery - Trailer",
+        "es": "Minecraft Bundles of Bravery - Trailer"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/Tf0qsEJNpIo/hqdefault.jpg"
@@ -187,6 +317,11 @@
     {
       "id": "I9THxLjrjSo",
       "title": "canción  \"en el mundo de faricraft\"",
+      "titles": {
+        "en": "canción  \"en el mundo de faricraft\"",
+        "pt": "canción  \"en el mundo de faricraft\"",
+        "es": "canción  \"en el mundo de faricraft\""
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/I9THxLjrjSo/hqdefault.jpg"
@@ -194,6 +329,11 @@
     {
       "id": "0jVfKfiEWIc",
       "title": "mí primer stop motion de Minecraft / 1",
+      "titles": {
+        "en": "mí primer stop motion de Minecraft / 1",
+        "pt": "mí primer stop motion de Minecraft / 1",
+        "es": "mí primer stop motion de Minecraft / 1"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/0jVfKfiEWIc/hqdefault.jpg"
@@ -201,6 +341,11 @@
     {
       "id": "YgDu5acmdsA",
       "title": "animación oficial parte 1 de faricraft",
+      "titles": {
+        "en": "animación oficial parte 1 de faricraft",
+        "pt": "animación oficial parte 1 de faricraft",
+        "es": "animación oficial parte 1 de faricraft"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/YgDu5acmdsA/hqdefault.jpg"
@@ -208,6 +353,11 @@
     {
       "id": "g6jFVHBNQ_8",
       "title": "decoraciones creativas para minecraft",
+      "titles": {
+        "en": "decoraciones creativas para minecraft",
+        "pt": "decoraciones creativas para minecraft",
+        "es": "decoraciones creativas para minecraft"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/g6jFVHBNQ_8/hqdefault.jpg"
@@ -215,6 +365,11 @@
     {
       "id": "PkqB9QTCc4A",
       "title": "Cómo tener mods en minecraft java 2024 (todas las versiones)",
+      "titles": {
+        "en": "Cómo tener mods en minecraft java 2024 (todas las versiones)",
+        "pt": "Como ter mods no Minecraft Java 2024 (todas as versões)",
+        "es": "Cómo tener mods en minecraft java 2024 (todas las versiones)"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/PkqB9QTCc4A/hqdefault.jpg"
@@ -222,6 +377,11 @@
     {
       "id": "2SNNMDxz810",
       "title": "Palo Debug 2: mejoramos la construcción",
+      "titles": {
+        "en": "Palo Debug 2: mejoramos la construcción",
+        "pt": "Palo Debug 2: mejoramos la construcción",
+        "es": "Palo Debug 2: mejoramos la construcción"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/2SNNMDxz810/hqdefault.jpg"
@@ -229,6 +389,11 @@
     {
       "id": "MqARwO3SwF4",
       "title": "PALO DEBUG trucos de minecraft capitulo 4",
+      "titles": {
+        "en": "PALO DEBUG trucos de minecraft capitulo 4",
+        "pt": "PALO DEBUG trucos de minecraft capitulo 4",
+        "es": "PALO DEBUG trucos de minecraft capitulo 4"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/MqARwO3SwF4/hqdefault.jpg"
@@ -236,6 +401,11 @@
     {
       "id": "4OCXNOKgaaM",
       "title": "zorro troll 988 | troleos en minecraft lego",
+      "titles": {
+        "en": "zorro troll 988 | troleos en minecraft lego",
+        "pt": "zorro troll 988 | troleos en minecraft lego",
+        "es": "zorro troll 988 | troleos en minecraft lego"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/4OCXNOKgaaM/hqdefault.jpg"
@@ -243,6 +413,11 @@
     {
       "id": "fswut_EGX4I",
       "title": "historia de toca boca World | compras",
+      "titles": {
+        "en": "historia de toca boca World | compras",
+        "pt": "história de toca boca World | compras",
+        "es": "historia de toca boca World | compras"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/fswut_EGX4I/hqdefault.jpg"
@@ -250,6 +425,11 @@
     {
       "id": "5t3LzQL_4Z0",
       "title": "trailer de minecraft | tricky trials 1.21",
+      "titles": {
+        "en": "trailer de minecraft | tricky trials 1.21",
+        "pt": "trailer de minecraft | tricky trials 1.21",
+        "es": "trailer de minecraft | tricky trials 1.21"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/5t3LzQL_4Z0/hqdefault.jpg"
@@ -257,6 +437,11 @@
     {
       "id": "WbrM0ZYRS3A",
       "title": "fabrico mi propio meteorito",
+      "titles": {
+        "en": "fabrico mi propio meteorito",
+        "pt": "fabrico mi propio meteorito",
+        "es": "fabrico mi propio meteorito"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/WbrM0ZYRS3A/hqdefault.jpg"
@@ -264,6 +449,11 @@
     {
       "id": "lQiqNEK0ehU",
       "title": "historia de minecraft | presentación de casas",
+      "titles": {
+        "en": "historia de minecraft | presentación de casas",
+        "pt": "historia de minecraft | presentación de casas",
+        "es": "historia de minecraft | presentación de casas"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/lQiqNEK0ehU/hqdefault.jpg"
@@ -271,6 +461,11 @@
     {
       "id": "cM28jI1RTUc",
       "title": "cancion | los mejores trailers",
+      "titles": {
+        "en": "cancion | los mejores trailers",
+        "pt": "cancion | los mejores trailers",
+        "es": "cancion | los mejores trailers"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/cM28jI1RTUc/hqdefault.jpg"
@@ -278,6 +473,11 @@
     {
       "id": "hRSTZxj2f98",
       "title": "cancion 🎶 | feliz soy",
+      "titles": {
+        "en": "cancion 🎶 | feliz soy",
+        "pt": "cancion 🎶 | feliz soy",
+        "es": "cancion 🎶 | feliz soy"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/hRSTZxj2f98/hqdefault.jpg"
@@ -285,6 +485,11 @@
     {
       "id": "NUk8i_fOBrE",
       "title": "mi canción 🎶  suscribete y dale like",
+      "titles": {
+        "en": "mi canción 🎶  suscribete y dale like",
+        "pt": "mi canción 🎶  suscribete y dale like",
+        "es": "mi canción 🎶  suscribete y dale like"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/NUk8i_fOBrE/hqdefault.jpg"
@@ -292,6 +497,11 @@
     {
       "id": "sd5HymjGi8I",
       "title": "hago trampas en el escondite de minecraft",
+      "titles": {
+        "en": "hago trampas en el escondite de minecraft",
+        "pt": "hago trampas en el escondite de minecraft",
+        "es": "hago trampas en el escondite de minecraft"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/sd5HymjGi8I/hqdefault.jpg"
@@ -299,6 +509,11 @@
     {
       "id": "P6GqbSpZoW0",
       "title": "la canción de farilina",
+      "titles": {
+        "en": "la canción de farilina",
+        "pt": "la canción de farilina",
+        "es": "la canción de farilina"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/P6GqbSpZoW0/hqdefault.jpg"
@@ -306,6 +521,11 @@
     {
       "id": "RCvylG5q_ko",
       "title": "nueva canción 🎶",
+      "titles": {
+        "en": "nueva canción 🎶",
+        "pt": "nueva canción 🎶",
+        "es": "nueva canción 🎶"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/RCvylG5q_ko/hqdefault.jpg"
@@ -313,6 +533,11 @@
     {
       "id": "IMQaLKxyRL4",
       "title": "UN ADD-ON de EMOJIS ÉPICO. 😮",
+      "titles": {
+        "en": "UN ADD-ON de EMOJIS ÉPICO. 😮",
+        "pt": "UN ADD-ON de EMOJIS ÉPICO. 😮",
+        "es": "UN ADD-ON de EMOJIS ÉPICO. 😮"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/IMQaLKxyRL4/hqdefault.jpg"
@@ -320,6 +545,11 @@
     {
       "id": "BbFR3QiiaQw",
       "title": "cómo hacer un bus primera manualidad",
+      "titles": {
+        "en": "cómo hacer un bus primera manualidad",
+        "pt": "como fazer um ônibus primeira arte manual",
+        "es": "cómo hacer un bus primera manualidad"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/BbFR3QiiaQw/hqdefault.jpg"
@@ -327,6 +557,11 @@
     {
       "id": "1ycND1xhJYQ",
       "title": "2 mods de un celular y un auto",
+      "titles": {
+        "en": "2 mods de un celular y un auto",
+        "pt": "2 mods de un celular y un auto",
+        "es": "2 mods de un celular y un auto"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/1ycND1xhJYQ/hqdefault.jpg"
@@ -334,6 +569,11 @@
     {
       "id": "M50lDBZM_7g",
       "title": "nueva serie hardcore episodio 1",
+      "titles": {
+        "en": "nueva serie hardcore episodio 1",
+        "pt": "nueva serie hardcore episodio 1",
+        "es": "nueva serie hardcore episodio 1"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/M50lDBZM_7g/hqdefault.jpg"
@@ -341,6 +581,11 @@
     {
       "id": "GDw1rPk59AI",
       "title": "Cómo decorar una armadura en minecraft",
+      "titles": {
+        "en": "Cómo decorar una armadura en minecraft",
+        "pt": "Cómo decorar una armadura en minecraft",
+        "es": "Cómo decorar una armadura en minecraft"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/GDw1rPk59AI/hqdefault.jpg"
@@ -348,6 +593,11 @@
     {
       "id": "kr3y2verckk",
       "title": "mini historia infantil faricraft de compras",
+      "titles": {
+        "en": "mini historia infantil faricraft de compras",
+        "pt": "mini historia infantil faricraft de compras",
+        "es": "mini historia infantil faricraft de compras"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/kr3y2verckk/hqdefault.jpg"
@@ -355,6 +605,11 @@
     {
       "id": "yBFnbEHOc14",
       "title": "mini historia infantil animales",
+      "titles": {
+        "en": "mini historia infantil animales",
+        "pt": "mini historia infantil animales",
+        "es": "mini historia infantil animales"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/yBFnbEHOc14/hqdefault.jpg"
@@ -362,6 +617,11 @@
     {
       "id": "QkWh7FtbhRE",
       "title": "mini historia infantil de vuelta a casa",
+      "titles": {
+        "en": "mini historia infantil de vuelta a casa",
+        "pt": "mini historia infantil de vuelta a casa",
+        "es": "mini historia infantil de vuelta a casa"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/QkWh7FtbhRE/hqdefault.jpg"
@@ -369,6 +629,11 @@
     {
       "id": "QT0u92z7oS4",
       "title": "serie supervivencia minecraft capítulo 1",
+      "titles": {
+        "en": "serie supervivencia minecraft capítulo 1",
+        "pt": "serie supervivencia minecraft capítulo 1",
+        "es": "serie supervivencia minecraft capítulo 1"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/QT0u92z7oS4/hqdefault.jpg"
@@ -376,6 +641,11 @@
     {
       "id": "xGFR2IGuwQg",
       "title": "cómo hacer una oveja multicolor",
+      "titles": {
+        "en": "cómo hacer una oveja multicolor",
+        "pt": "cómo hacer una oveja multicolor",
+        "es": "cómo hacer una oveja multicolor"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/xGFR2IGuwQg/hqdefault.jpg"
@@ -383,6 +653,11 @@
     {
       "id": "iVFVvKvibhY",
       "title": "farilina visita el canal",
+      "titles": {
+        "en": "farilina visita el canal",
+        "pt": "farilina visita el canal",
+        "es": "farilina visita el canal"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/iVFVvKvibhY/hqdefault.jpg"
@@ -390,6 +665,11 @@
     {
       "id": "kRTpVPtfES8",
       "title": "como hacer concreto en minecraft",
+      "titles": {
+        "en": "como hacer concreto en minecraft",
+        "pt": "como hacer concreto en minecraft",
+        "es": "como hacer concreto en minecraft"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/kRTpVPtfES8/hqdefault.jpg"
@@ -397,6 +677,11 @@
     {
       "id": "pvDECsoSQhQ",
       "title": "trucos de minecraft parte 3",
+      "titles": {
+        "en": "trucos de minecraft parte 3",
+        "pt": "trucos de minecraft parte 3",
+        "es": "trucos de minecraft parte 3"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/pvDECsoSQhQ/hqdefault.jpg"
@@ -404,6 +689,11 @@
     {
       "id": "6HH0EL-msQE",
       "title": "trucos de minecraft parte 2",
+      "titles": {
+        "en": "trucos de minecraft parte 2",
+        "pt": "trucos de minecraft parte 2",
+        "es": "trucos de minecraft parte 2"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/6HH0EL-msQE/hqdefault.jpg"
@@ -411,6 +701,11 @@
     {
       "id": "Uy1uX8F5goo",
       "title": "trucos de minecraft parte 1",
+      "titles": {
+        "en": "trucos de minecraft parte 1",
+        "pt": "trucos de minecraft parte 1",
+        "es": "trucos de minecraft parte 1"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/Uy1uX8F5goo/hqdefault.jpg"
@@ -418,13 +713,23 @@
     {
       "id": "w8zyB20sQm0",
       "title": "serie hardcore capítulo 2 en directo",
+      "titles": {
+        "en": "serie hardcore capítulo 2 en directo",
+        "pt": "serie hardcore capítulo 2 en directo",
+        "es": "serie hardcore capítulo 2 en directo"
+      },
       "description": "",
       "date": "2024-11-07T00:00:00+00:00",
       "thumbnail": "https://i.ytimg.com/vi/w8zyB20sQm0/hqdefault.jpg"
     },
     {
       "id": "Y4WOp60T9yI",
-      "title": "IMPORTANT ANNOUNCEMENT!!! #movies #movie",
+      "title": "ANUNCIO IMPORTANTE!!! #peliculas #película",
+      "titles": {
+        "en": "IMPORTANT ANNOUNCEMENT!!! #movies #movie",
+        "pt": "ANÚNCIO IMPORTANTE!!! #filmes #filme",
+        "es": "ANUNCIO IMPORTANTE!!! #peliculas #película"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/Y4WOp60T9yI/hqdefault.jpg"
@@ -432,6 +737,11 @@
     {
       "id": "JqH-UVmdoCc",
       "title": "Nueva actualización pack gfx #shorts #gfx",
+      "titles": {
+        "en": "Nueva actualización pack gfx #shorts #gfx",
+        "pt": "Nueva actualización pack gfx #shorts #gfx",
+        "es": "Nueva actualización pack gfx #shorts #gfx"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/JqH-UVmdoCc/hqdefault.jpg"
@@ -439,6 +749,11 @@
     {
       "id": "oRiob1hAPug",
       "title": "YO",
+      "titles": {
+        "en": "YO",
+        "pt": "YO",
+        "es": "YO"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/oRiob1hAPug/hqdefault.jpg"
@@ -446,6 +761,11 @@
     {
       "id": "ocl4P5_f0xs",
       "title": "crafteo un mundo de minecraft",
+      "titles": {
+        "en": "crafteo un mundo de minecraft",
+        "pt": "crafteo un mundo de minecraft",
+        "es": "crafteo un mundo de minecraft"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/ocl4P5_f0xs/hqdefault.jpg"
@@ -453,6 +773,11 @@
     {
       "id": "93qCSehfdq0",
       "title": "canción farilina letra",
+      "titles": {
+        "en": "canción farilina letra",
+        "pt": "canción farilina letra",
+        "es": "canción farilina letra"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/93qCSehfdq0/hqdefault.jpg"
@@ -460,6 +785,11 @@
     {
       "id": "tZNU1iEHF9c",
       "title": "canción farilina",
+      "titles": {
+        "en": "canción farilina",
+        "pt": "canción farilina",
+        "es": "canción farilina"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/tZNU1iEHF9c/hqdefault.jpg"
@@ -467,6 +797,11 @@
     {
       "id": "2d-F5-w4Krc",
       "title": "tengo un celular en minecraft",
+      "titles": {
+        "en": "tengo un celular en minecraft",
+        "pt": "tengo un celular en minecraft",
+        "es": "tengo un celular en minecraft"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/2d-F5-w4Krc/hqdefault.jpg"
@@ -474,6 +809,11 @@
     {
       "id": "r_V78mp-PPY",
       "title": "cómo tener una oveja multicolor en Minecraft",
+      "titles": {
+        "en": "cómo tener una oveja multicolor en Minecraft",
+        "pt": "cómo tener una oveja multicolor en Minecraft",
+        "es": "cómo tener una oveja multicolor en Minecraft"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/r_V78mp-PPY/hqdefault.jpg"
@@ -481,6 +821,11 @@
     {
       "id": "Jfk9WhMv_vA",
       "title": "farilina presentación",
+      "titles": {
+        "en": "farilina presentación",
+        "pt": "farilina presentación",
+        "es": "farilina presentación"
+      },
       "description": "",
       "date": "",
       "thumbnail": "https://i.ytimg.com/vi/Jfk9WhMv_vA/hqdefault.jpg"
