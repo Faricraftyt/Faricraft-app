@@ -46,8 +46,17 @@ namespace Faricraft {
             foreach(ToolStripItem item in menu.Items) { item.Margin = new Padding(0,0,8,0); item.Padding = new Padding(12,5,12,5); }
             var retry = new Button { Text = "Reintentar conexión", Dock = DockStyle.Bottom, Height = 48 };
             retry.Click += (s,e) => OpenHome(); notice.Controls.Add(message); notice.Controls.Add(retry);
-            Controls.Add(browser); Controls.Add(notice); Controls.Add(menu);
-            notice.BringToFront(); menu.BringToFront();
+            // Separate rows reserve real space for the menu, independently of Z-order and DPI.
+            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Margin = Padding.Empty, Padding = Padding.Empty };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            var content = new Panel { Dock = DockStyle.Fill, Margin = Padding.Empty, Padding = Padding.Empty };
+            menu.Dock = DockStyle.Fill; menu.Margin = Padding.Empty;
+            content.Controls.Add(browser); content.Controls.Add(notice);
+            layout.Controls.Add(menu, 0, 0); layout.Controls.Add(content, 0, 1);
+            Controls.Add(layout);
+            notice.BringToFront();
             Shown += async (s,e) => { ApplyTheme(renderer.Dark, ColorTranslator.ToHtml(renderer.Accent)); await InitializeBrowser(); };
             FormClosed += (s,e) => browser.Dispose();
         }

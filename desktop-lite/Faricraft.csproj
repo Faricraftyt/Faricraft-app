@@ -7,7 +7,7 @@
     <RootNamespace>Faricraft</RootNamespace>
     <ApplicationIcon>assets/icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Product>Faricraft APP</Product>
     <Company>Faricraft</Company>
     <LangVersion>latest</LangVersion>
