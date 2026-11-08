@@ -1,3 +1,4 @@
+import { PersonalPage } from "./components/Personal";
 import { LanguageSelector } from "./components/LanguageSelector";
 import { t, useLanguage } from "./services/i18n";
 import React, { Suspense, lazy, useEffect, useState } from "react";
@@ -105,6 +106,7 @@ function App() {
             ["/videos", t("Videos"), Film],
             ["/recursos", t("Descargas"), Box],
             ["/bio", t("BIO"), UserRound],
+            ["/biblioteca", t("Mi biblioteca"), Box],
           ].map(([path, name, Icon]: any) => (
             <NavLink key={path} to={path} end={path === "/"}>
               <Icon size={18} />
@@ -131,6 +133,7 @@ function App() {
       <main id="main" tabIndex={-1}>
         <Suspense fallback={<Loading />}>
           <Routes>
+            <Route path="/biblioteca" element={<PersonalPage />} />
             <Route path="/" element={<Public d={d} page="home" />} />
             <Route path="/videos" element={<Public d={d} page="videos" />} />
             <Route

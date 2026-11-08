@@ -1,3 +1,4 @@
+import { PersonalActions, recordAction } from "../components/Personal";
 import { isBook, resourceForLanguage } from "../services/resourceEditions";
 import { t, useLanguage } from "../services/i18n";
 import { useState } from "react";
@@ -67,14 +68,15 @@ export default function Public({ d, page }: { d: Data; page: string }) {
             <p>
               {r.format} · {r.size} · {r.date}
             </p>
-            <div className="actions"><a
+            <PersonalActions item={{id:r.id,title:r.title,url:"#/recursos/"+r.id,kind:"resource"}} /><div className="actions"><a
               className="button primary"
+              onClick={() => recordAction({id:r.id,title:r.title,url:"#/recursos/"+r.id,kind:"resource"}, "download")}
               href={r.url}
               target="_blank"
               rel="noreferrer"
             >
               <Download size={18} />{t(isBook(r.category, d.categories) && r.format.toUpperCase() === "PDF" ? "Descargar PDF" : "Descargar archivo")}</a>
-            {r.viewUrl && <a className="button" href={r.viewUrl} target="_blank" rel="noreferrer">{t("Ver online")} ↗</a>}
+            {r.viewUrl && <a className="button" onClick={() => recordAction({id:r.id,title:r.title,url:"#/recursos/"+r.id,kind:"resource"}, "read")} href={r.viewUrl} target="_blank" rel="noreferrer">{t("Leer online")} ↗</a>}
             </div>
             <p className="muted">{t("Se abrirá el enlace público del archivo.")}</p>
           </section>

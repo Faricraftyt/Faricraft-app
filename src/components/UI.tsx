@@ -1,3 +1,4 @@
+import { PersonalActions } from "./Personal";
 import { resourceForLanguage } from "../services/resourceEditions";
 import { videoTitle } from "../services/videoTitles";
 import { t, useLanguage, localeFor } from "../services/i18n";
@@ -39,7 +40,7 @@ export function ResourceCard({ r: original, d }: { r: Resource; d: Data }) {
   const language = useLanguage();
   const r = resourceForLanguage(original, language);
   return (
-    <Link className="card" to={"/recursos/" + r.id}>
+    <article className="card"><Link to={"/recursos/" + r.id}>
       <Picture src={r.image} alt={r.title} />
       <div className="cardbody">
         <small>
@@ -51,7 +52,7 @@ export function ResourceCard({ r: original, d }: { r: Resource; d: Data }) {
         </h3>
         {r.description && <p>{r.description.slice(0, 110)}</p>}
       </div>
-    </Link>
+    </Link><PersonalActions item={{id:r.id,title:r.title,url:"#/recursos/"+r.id,kind:"resource"}} /></article>
   );
 }
 export function BioView({ d }: { d: Data }) {
@@ -151,7 +152,7 @@ export function VideosView({ d, limit }: { d: Data; limit?: number }) {
                 )}
                 <div className="cardbody">
                   {v.date && <small>{new Date(v.date).toLocaleDateString(localeFor(language))}</small>}
-                  <h3>{title}</h3>
+                  <h3>{title}</h3><PersonalActions item={{id:v.id,title,url:"https://www.youtube.com/watch?v="+v.id,kind:"video"}} />
                   <p>{v.description.slice(0, 160)}</p>
                   <a
                     href={"https://www.youtube.com/watch?v=" + v.id}
