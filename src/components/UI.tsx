@@ -40,7 +40,7 @@ export function ResourceCard({ r: original, d }: { r: Resource; d: Data }) {
   const language = useLanguage();
   const r = resourceForLanguage(original, language);
   return (
-    <article className="card"><Link to={"/recursos/" + r.id}>
+    <article className="card resource-card"><Link className="resource-card-link" to={"/recursos/" + r.id}>
       <Picture src={r.image} alt={r.title} />
       <div className="cardbody">
         <small>

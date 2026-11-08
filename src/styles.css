@@ -945,3 +945,17 @@ footer .language-options { position: absolute; bottom: calc(100% + 8px); right: 
 .personal-actions button { display:inline-flex; align-items:center; gap:.4rem; padding:.55rem .75rem; border-radius:.65rem; }
 .personal-actions button[aria-pressed="true"] { color:var(--accent); }
 header nav { flex-wrap:wrap; }
+
+/* Bound portrait covers independently of the source image dimensions. */
+.resource-card { min-width: 0; }
+.resource-card-link { display: block; min-width: 0; }
+.resource-card-link > img,
+.resource-card-link > .placeholder {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  object-position: center;
+  background: var(--panel);
+}
+.detail > img { height: auto; max-height: 560px; object-fit: contain; }
