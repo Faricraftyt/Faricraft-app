@@ -1,0 +1,49 @@
+{
+  "name": "faricraft-desktop",
+  "version": "1.0.0",
+  "description": "Faricraft APP para Windows",
+  "author": "Faricraft",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.2.3",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.faricraft.app",
+    "productName": "Faricraft APP",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "offline.html",
+      "assets/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Faricraft APP",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerLanguages": [
+        "es_ES",
+        "en_US"
+      ],
+      "displayLanguageSelector": true,
+      "artifactName": "Faricraft-APP-Setup-${version}.exe"
+    }
+  }
+}
