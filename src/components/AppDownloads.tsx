@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { isAppEnvironment } from "../services/appEnvironment";
 import { Download, Monitor, Smartphone } from "lucide-react";
 import { t } from "../services/i18n";
 import { asset } from "../services/schema";
@@ -9,6 +11,17 @@ const installers = [
 ];
 
 export function AppDownloads() {
+  const [insideApp, setInsideApp] = useState(() => isAppEnvironment());
+  useEffect(() => {
+    const detect = () => setInsideApp(isAppEnvironment());
+    const timer = window.setInterval(detect, 500);
+    window.addEventListener("pywebviewready", detect);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("pywebviewready", detect);
+    };
+  }, []);
+  if (insideApp) return null;
   return <section className="app-downloads" aria-labelledby="app-downloads-title">
     <span className="eyebrow">FARICRAFT APP</span>
     <h2 id="app-downloads-title">{t("Descargar Faricraft APP")}</h2>
