@@ -1,3 +1,4 @@
+import { AppDownloads } from "./components/AppDownloads";
 import { PersonalPage } from "./components/Personal";
 import { LanguageSelector } from "./components/LanguageSelector";
 import { t, useLanguage } from "./services/i18n";
@@ -133,6 +134,7 @@ function App() {
       <main id="main" tabIndex={-1}>
         <Suspense fallback={<Loading />}>
           <Routes>
+            <Route path="/descargar-app" element={<AppDownloads />} />
             <Route path="/biblioteca" element={<PersonalPage />} />
             <Route path="/" element={<Public d={d} page="home" />} />
             <Route path="/videos" element={<Public d={d} page="videos" />} />
@@ -162,6 +164,7 @@ function App() {
         <div>
           <strong>{d.settings.name}</strong>
           <p>{t("Crear. Jugar. Compartir.")}</p>
+          <NavLink to="/descargar-app">{t("Descargar Faricraft APP")}</NavLink>
         </div>
         <div>
           {d.settings.links.map((l, i) => (

@@ -1,3 +1,4 @@
+import { AppDownloads } from "../components/AppDownloads";
 import { PersonalActions, recordAction } from "../components/Personal";
 import { isBook, resourceForLanguage } from "../services/resourceEditions";
 import { t, useLanguage } from "../services/i18n";
@@ -104,6 +105,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       );
     return (
       <>
+        <AppDownloads />
         <span className="eyebrow">{t("HECHO PARA COMPARTIR")}</span>
         <h1>{t("Descarga todos los recursos")}</h1>
         <p className="lead">{t("Todos los archivos y proyectos que te enseño en mi canal.. o no")}</p>
@@ -202,6 +204,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
           <span className="art-caption">FARICRAFT APP</span>
         </div>
       </section>
+      <AppDownloads />
       <div className="quick-grid">
         {[
           ["/videos", t("Videos"), t("Una partida, una nueva historia."), Film],

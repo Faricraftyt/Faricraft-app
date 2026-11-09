@@ -1,4 +1,12 @@
 export const translations: Record<string, { en: string; pt: string }> = {
+"Descargar Faricraft APP": {"en": "Download Faricraft APP", "pt": "Baixar Faricraft APP"},
+"Llevá la app a tu PC o celular. Elegí tu sistema y descargá el instalador.": {"en": "Get the app on your PC or phone. Choose your system and download the installer.", "pt": "Leve o app para seu PC ou celular. Escolha seu sistema e baixe o instalador."},
+"Instalador ligero para Windows.": {"en": "Lightweight installer for Windows.", "pt": "Instalador leve para Windows."},
+"Paquete .deb para Debian, Ubuntu y Linux Mint.": {"en": ".deb package for Debian, Ubuntu and Linux Mint.", "pt": "Pacote .deb para Debian, Ubuntu e Linux Mint."},
+"Instalá la app en tu celular Android.": {"en": "Install the app on your Android phone.", "pt": "Instale o app no seu celular Android."},
+"Descargar para": {"en": "Download for", "pt": "Baixar para"},
+"Las apps necesitan conexión a internet para cargar el contenido actualizado.": {"en": "The apps need an internet connection to load updated content.", "pt": "Os apps precisam de conexão com a internet para carregar o conteúdo atualizado."},
+
 "Mi biblioteca": {"en": "My library", "pt": "Minha biblioteca"},
 "Favoritos": {"en": "Favorites", "pt": "Favoritos"},
 "Favorito": {"en": "Favorite", "pt": "Favorito"},
