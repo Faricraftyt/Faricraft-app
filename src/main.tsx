@@ -1,3 +1,4 @@
+import { isAppEnvironment } from "./services/appEnvironment";
 import { AppDownloads } from "./components/AppDownloads";
 import { PersonalPage } from "./components/Personal";
 import { LanguageSelector } from "./components/LanguageSelector";
@@ -10,6 +11,7 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import { Home, Film, Box, UserRound, Sun, Moon } from "lucide-react";
 import { Data, asset } from "./services/schema";
@@ -53,6 +55,17 @@ function App() {
     [err, E] = useState(""),
     [theme, T] = useState(localStorage.getItem("faricraft-theme") || "");
   const loc = useLocation();
+  const [insideApp, setInsideApp] = useState(() => isAppEnvironment());
+  useEffect(() => {
+    // Some wrappers expose their native bridge after the initial render.
+    const detect = () => setInsideApp(isAppEnvironment());
+    const timer = window.setInterval(detect, 500);
+    window.addEventListener("pywebviewready", detect);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("pywebviewready", detect);
+    };
+  }, []);
   useEffect(() => {
     loadPublic()
       .then((r) => D(r.data))
@@ -134,7 +147,7 @@ function App() {
       <main id="main" tabIndex={-1}>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/descargar-app" element={<AppDownloads />} />
+            <Route path="/descargar-app" element={insideApp ? <Navigate to="/" replace /> : <AppDownloads />} />
             <Route path="/biblioteca" element={<PersonalPage />} />
             <Route path="/" element={<Public d={d} page="home" />} />
             <Route path="/videos" element={<Public d={d} page="videos" />} />
@@ -164,7 +177,7 @@ function App() {
         <div>
           <strong>{d.settings.name}</strong>
           <p>{t("Crear. Jugar. Compartir.")}</p>
-          <NavLink to="/descargar-app">{t("Descargar Faricraft APP")}</NavLink>
+          {!insideApp && <NavLink to="/descargar-app">{t("Descargar Faricraft APP")}</NavLink>}
         </div>
         <div>
           {d.settings.links.map((l, i) => (
