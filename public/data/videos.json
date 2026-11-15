@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T22:35:29.397802+00:00",
+  "updatedAt": "2026-11-15T06:49:06.121008+00:00",
   "error": null,
   "items": [
     {
@@ -7,7 +7,7 @@
       "title": "Creé mi propia WEB...",
       "titles": {
         "en": "I created my own app...",
-        "pt": "Creé mi propia WEB...",
+        "pt": "Creé mi propia APP...",
         "es": "Creé mi propia WEB..."
       },
       "description": "",
@@ -42,7 +42,7 @@
       "id": "4rhaBT2lugA",
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #3",
       "titles": {
-        "en": "Live Stream 🔴-- MINECRAFT DUNGEONS II #3",
+        "en": "Directo 🔴-- MINECRAFT DUNGEONS II #3",
         "pt": "Live 🔴-- MINECRAFT DUNGEONS II #3",
         "es": "Directo 🔴-- MINECRAFT DUNGEONS II #3"
       },
@@ -54,7 +54,7 @@
       "id": "BloFQcwMriI",
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #2",
       "titles": {
-        "en": "LIVE 🔴-- MINECRAFT DUNGEONS II #2",
+        "en": "Directo 🔴-- MINECRAFT DUNGEONS II #2",
         "pt": "Live 🔴-- MINECRAFT DUNGEONS II #2",
         "es": "Directo 🔴-- MINECRAFT DUNGEONS II #2"
       },
@@ -66,7 +66,7 @@
       "id": "wE6Sfs9Bzls",
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #1",
       "titles": {
-        "en": "Live 🔴-- MINECRAFT DUNGEONS II #1",
+        "en": "Directo 🔴-- MINECRAFT DUNGEONS II #1",
         "pt": "Directo 🔴-- MINECRAFT DUNGEONS II #1",
         "es": "Directo 🔴-- MINECRAFT DUNGEONS II #1"
       },
@@ -738,7 +738,7 @@
       "id": "Y4WOp60T9yI",
       "title": "ANUNCIO IMPORTANTE!!! #peliculas #película",
       "titles": {
-        "en": "IMPORTANT ANNOUNCEMENT!!! #movies #movie",
+        "en": "ANUNCIO IMPORTANTE!!! #peliculas #película",
         "pt": "ANÚNCIO IMPORTANTE!!! #filmes #filme",
         "es": "ANUNCIO IMPORTANTE!!! #peliculas #película"
       },
