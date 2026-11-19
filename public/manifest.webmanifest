@@ -1,0 +1,14 @@
+{
+  "name": "Faricraft APP",
+  "short_name": "Faricraft",
+  "description": "Un espacio donde encontrarás descargas exclusivas, videos y más",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111512",
+  "theme_color": "#111512",
+  "lang": "es",
+  "icons": [
+    { "src": "images/ea199e55-6b06-4b84-b35e-1d3b89d984d7.png", "sizes": "1080x1080", "type": "image/png", "purpose": "any" }
+  ]
+}
