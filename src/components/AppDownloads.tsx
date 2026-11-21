@@ -15,9 +15,11 @@ export function AppDownloads() {
   useEffect(() => {
     const detect = () => setInsideApp(isAppEnvironment());
     const timer = window.setInterval(detect, 500);
+    const stop = window.setTimeout(() => window.clearInterval(timer), 8000);
     window.addEventListener("pywebviewready", detect);
     return () => {
       window.clearInterval(timer);
+      window.clearTimeout(stop);
       window.removeEventListener("pywebviewready", detect);
     };
   }, []);

@@ -16,6 +16,7 @@ import {
 import { Home, Film, Box, UserRound, Sun, Moon } from "lucide-react";
 import { Data, asset } from "./services/schema";
 import { loadPublic } from "./services/storage";
+import { SearchPalette } from "./components/SearchPalette";
 import "./styles.css";
 const Public = lazy(() => import("./pages/Public"));
 const Admin = lazy(() => import("./pages/AdminGate"));
@@ -60,9 +61,12 @@ function App() {
     // Some wrappers expose their native bridge after the initial render.
     const detect = () => setInsideApp(isAppEnvironment());
     const timer = window.setInterval(detect, 500);
+    // The bridge shows up within a few seconds or never; stop polling after that.
+    const stop = window.setTimeout(() => window.clearInterval(timer), 8000);
     window.addEventListener("pywebviewready", detect);
     return () => {
       window.clearInterval(timer);
+      window.clearTimeout(stop);
       window.removeEventListener("pywebviewready", detect);
     };
   }, []);
@@ -128,6 +132,7 @@ function App() {
             </NavLink>
           ))}
         </nav>
+        <SearchPalette d={d} />
         <button
           className="theme"
           aria-label={t("Cambiar tema")}
@@ -192,6 +197,12 @@ function App() {
       </footer>
     </>
   );
+}
+// Offline support + instant reloads (production only; dev server stays uncached).
+if (import.meta.env.PROD && "serviceWorker" in navigator && location.protocol === "https:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(import.meta.env.BASE_URL + "sw.js").catch(() => {});
+  });
 }
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

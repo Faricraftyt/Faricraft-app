@@ -3,6 +3,7 @@ import { PersonalActions, recordAction } from "../components/Personal";
 import { isBook, resourceForLanguage } from "../services/resourceEditions";
 import { t, useLanguage } from "../services/i18n";
 import { useState } from "react";
+import { matches } from "../services/search";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowRight,
@@ -37,7 +38,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
         <span className="eyebrow">{t("EL CANAL")}</span>
         <h1>{t("Una aventura más.")}</h1>
         <p className="lead">{t("Todos los videos del canal, en un solo lugar.")}</p>
-        <VideosView d={d} />
+        <VideosView d={d} browse />
         {d.settings.channelUrl && (
           <a
             className="button"
@@ -92,9 +93,7 @@ export default function Public({ d, page }: { d: Data; page: string }) {
       .filter(
         (r) =>
           (!cat || r.category === cat) &&
-          (r.title + " " + r.description + " " + r.tags.join(" "))
-            .toLowerCase()
-            .includes(q.toLowerCase()),
+          matches(q, r.title, r.description, r.tags.join(" "), r.format),
       )
       .sort((a, b) =>
         sort === "old"
