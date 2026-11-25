@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-11-24T22:36:52.462804+00:00",
+  "updatedAt": "2026-11-25T08:51:26.827791+00:00",
   "error": null,
   "items": [
     {
       "id": "70-PfxLari8",
-      "title": "¡CREÉ MI PROPIA APP! | Faricraft APP",
+      "title": "Creé mi propia WEB...",
       "titles": {
         "en": "I created my own app...",
-        "pt": "Creé mi propia WEB...",
-        "es": "¡CREÉ MI PROPIA APP! | Faricraft APP"
+        "pt": "Creé mi propia APP...",
+        "es": "Creé mi propia WEB..."
       },
       "description": "",
       "date": "2026-11-15T00:00:00+00:00",
@@ -43,7 +43,7 @@
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #3",
       "titles": {
         "en": "Live Stream 🔴-- MINECRAFT DUNGEONS II #3",
-        "pt": "Directo 🔴-- MINECRAFT DUNGEONS II #3",
+        "pt": "Live 🔴-- MINECRAFT DUNGEONS II #3",
         "es": "Directo 🔴-- MINECRAFT DUNGEONS II #3"
       },
       "description": "",
@@ -55,7 +55,7 @@
       "title": "Directo 🔴-- MINECRAFT DUNGEONS II #2",
       "titles": {
         "en": "LIVE 🔴-- MINECRAFT DUNGEONS II #2",
-        "pt": "Directo 🔴-- MINECRAFT DUNGEONS II #2",
+        "pt": "Live 🔴-- MINECRAFT DUNGEONS II #2",
         "es": "Directo 🔴-- MINECRAFT DUNGEONS II #2"
       },
       "description": "",
@@ -559,7 +559,7 @@
       "title": "cómo hacer un bus primera manualidad",
       "titles": {
         "en": "cómo hacer un bus primera manualidad",
-        "pt": "cómo hacer un bus primera manualidad",
+        "pt": "como fazer um ônibus primeira arte manual",
         "es": "cómo hacer un bus primera manualidad"
       },
       "description": "",
@@ -739,7 +739,7 @@
       "title": "ANUNCIO IMPORTANTE!!! #peliculas #película",
       "titles": {
         "en": "IMPORTANT ANNOUNCEMENT!!! #movies #movie",
-        "pt": "ANUNCIO IMPORTANTE!!! #peliculas #película",
+        "pt": "ANÚNCIO IMPORTANTE!!! #filmes #filme",
         "es": "ANUNCIO IMPORTANTE!!! #peliculas #película"
       },
       "description": "",
